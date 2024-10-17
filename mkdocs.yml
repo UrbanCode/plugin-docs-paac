@@ -1,2 +1,2 @@
-site_name: "z/OS Rexx Executor"
+site_name: "PAAC"
 INHERIT: plugin-doc-common-config/base.yml

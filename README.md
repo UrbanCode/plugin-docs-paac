@@ -1,1 +1,1 @@
-This repository contains documentation for z/OS Rexx Executor plugin for Devops deploy.
+This repository contains documentation for PAAC CLI tool and it's integration with Devops deploy.

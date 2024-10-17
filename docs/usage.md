@@ -1,70 +1,80 @@
-# Usage
+## Usage
+
+### Steps to Integrate PAAC with DevOps Deploy using Jenkins
+
+#### Illustration of an Integration Architecture
+
+##### Prerequisites:
+- Jenkins should be installed.
+- The PAAC CLI should be present on the machine where the Jenkins server is installed.
+- Permissions to update the process being worked on.
+
+##### Problem Statement:
+Need to update an existing process stored in GitHub in JSON format to DevOps Deploy. The process can be of any type: **Generic**, **Component**, or **Application**.
+
+### Configurations Needed in Jenkins:
+
+1. **Create a New Freestyle Project**  
+   In Jenkins, create a new Freestyle project. Name it something like "Import-process-from-git".
+
+2. **Configure the Source Code Management Section**  
+   Add the Git credentials where the processes are stored.  
+   ![Image 1](../media/Step2.png)
+
+3. **Configure the Build Triggers Section**  
+   Check the "Poll SCM" checkbox.  
+   In the "Schedule" text box, provide `* * * * *` to poll for changes every minute from the Git repo.  
+   ![Image 2](../media/Step3.png)
+
+4. **Configure the Build Steps Section**  
+   Add an "Execute Shell" option.  
+   In the "Execute Shell" command box, change the current working directory to the directory where the PAAC CLI is present.  
+   Then execute the command (refer to the **List of All Commands** section) according to the type of process you're working with.  
+   ![Image 3](../media/Step4.png)
+
+5. **Make Changes to Your JSON File**  
+   Use any IDE to make changes to the JSON file and push the changes to GitHub.
+
+6. **Jenkins Polling and Job Trigger**  
+   Once changes are merged to the main or master branch (depending on your setup in step 2), Jenkins will poll the repository and trigger a job.  
+   This will result in updating the process in DevOps Deploy.
 
 ---
 
-The z/OS Rexx Executor plug-in will execute statements provided in a dataset or inline in the plugin step.
- 
-Select **Source type** as **DATASET** from the drop-down and 
-enter the dataset in the **Source Value**. 
-Fully qualified dataset needs to be enclosed in single quotes.
-When the quotes are omitted then, the TSO prefix of the id running the 
-plugin step is prefixed to the Source Dataset.
-  
-(or)
+### List of All Commands:
 
-Select **Source type** as **INLINE** from the drop-down and 
-then in the **Source Value** enter REXX statements beginning with a **/\* REXX \*/** statement.
+- **Download a Generic Process**  
+  **Syntax**:  
+  `download-generic-process <username> <password> <server-url> <process-name> <output-file>`  
+  **Example**:  
+  `download-generic-process myuser mypassword https://url:8443 myGenericProcessName myGenericProcess.json`
 
-Arguments can be passed to the REXX program with/without quotes. 
-However, if there are more than one argument then arguments must be separated by a space.
+- **Download a Component Process**  
+  **Syntax**:  
+  `download-component-process <username> <password> <server-url> <component-process-name> <component-name> <output-file>`  
+  **Example**:  
+  `download-component-process myuser mypassword https://url:8443 myComponentProcessName myComponentName myComponentProcess.json`
 
-The **SYSPROC** field allows user to pass datasets containing REXX programs 
-that will be used by the REXX program run by the plugin step. 
-Multiple **SYSPROC** datasets can be passed by separating datasets by a comma(,).
+- **Download an Application Process**  
+  **Syntax**:  
+  `download-application-process <username> <password> <server-url> <application-process-name> <application-name> <output-file>`  
+  **Example**:  
+  `download-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json`
 
-### Setting output property
+- **Upload a Generic Process**  
+  **Syntax**:  
+  `upload-generic-process <username> <password> <server-url> <process-name> <input-file>`  
+  **Example**:  
+  `upload-generic-process myuser mypassword https://url:8443 myGenericProcessName myGenericProcess.json`
 
-This plugin allows user to set output properties from the REXX program and 
-later to be used in successive steps of a process. 
-A user REXX program can simply invoke a call to **SETPROP** with two arguments.
+- **Upload a Component Process**  
+  **Syntax**:  
+  `upload-component-process <username> <password> <server-url> <component-process-name> <component-name> <input-file>`  
+  **Example**:  
+  `upload-component-process myuser mypassword https://url:8443 myComponentProcessName myComponentName myComponentProcess.json`
 
-The first argument is output property name and 
-the second argument is the property value.
-
-> CALL SETPROP propertyName propertyValue
-
-For example, below REXX snippet will set an output property **currentDate** with value of **date** variable
-
-***
-    /* REXX */
-    date = DATE('S')  /* Returns date in YYYYMMDD format E.g., 20120327 */
-    CALL SETPROP "currentDate" date   
-
-### Setting multi-line output property
-
-To set a multi-line output property, the lines of the property value must be separated 
-by a delimiter returned by inbuilt program **GETDLMTR** 
-
-***
-    /* REXX */
-    delimiter = GETDLMTR() /* Return delimiter to separate lines */
-    lines = "This is first line" || delimiter || "This is second line"  
-    CALL SETPROP "outputLines" lines
-    
-Will set property **outputLines** to below value
-
-***
-    This is first line
-    This is second line
-
-### Referring properties from successive steps
-
-If the rexx step name is **Run-Rexx-Program** and output property name is **currentDate**
-then the output properties can be referred by the successive steps as below
-
-> ${p:Run-Rexx-Program/currentDate}
-
-**Note**
-
-From plugin version 2, an output property __RexxReturnCode__ will store the return/exit code from REXX program.
-
+- **Upload an Application Process**  
+  **Syntax**:  
+  `upload-application-process <username> <password> <server-url> <application-process-name> <application-name> <input-file>`  
+  **Example**:  
+  `upload-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json`

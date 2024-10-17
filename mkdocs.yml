@@ -1,0 +1,2 @@
+site_name: "z/OS Rexx Executor"
+INHERIT: plugin-doc-common-config/base.yml

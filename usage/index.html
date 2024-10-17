@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../steps/">
+        <link rel="prev" href="../downloads/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Usage - z/OS Rexx Executor</title>
+        <title>Usage - PAAC</title>
       
     
     
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://urbancode.github.io/IBM-UCx-PLUGIN-DOCS/UCD/" title="z/OS Rexx Executor" class="md-header__button md-logo" aria-label="z/OS Rexx Executor" data-md-component="logo">
+    <a href="https://urbancode.github.io/IBM-UCx-PLUGIN-DOCS/UCD/" title="PAAC" class="md-header__button md-logo" aria-label="PAAC" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -94,7 +94,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            z/OS Rexx Executor
+            PAAC
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -221,23 +221,6 @@
         
   
   
-  
-    <li class="md-tabs__item">
-      <a href="../steps/" class="md-tabs__link">
-        
-  
-    
-  
-  Steps
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
     
   
   
@@ -284,13 +267,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://urbancode.github.io/IBM-UCx-PLUGIN-DOCS/UCD/" title="z/OS Rexx Executor" class="md-nav__button md-logo" aria-label="z/OS Rexx Executor" data-md-component="logo">
+    <a href="https://urbancode.github.io/IBM-UCx-PLUGIN-DOCS/UCD/" title="PAAC" class="md-nav__button md-logo" aria-label="PAAC" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
 
     </a>
-    z/OS Rexx Executor
+    PAAC
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -339,26 +322,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../steps/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Steps
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -367,8 +330,6 @@
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-      
-        
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -398,8 +359,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -408,29 +367,83 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-output-property" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting output property
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-integrate-paac-with-devops-deploy-using-jenkins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Integrate PAAC with DevOps Deploy using Jenkins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steps to Integrate PAAC with DevOps Deploy using Jenkins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#illustration-of-an-integration-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Illustration of an Integration Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Illustration of an Integration Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-multi-line-output-property" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting multi-line output property
+      Problem Statement:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#referring-properties-from-successive-steps" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurations-needed-in-jenkins" class="md-nav__link">
     <span class="md-ellipsis">
-      Referring properties from successive steps
+      Configurations Needed in Jenkins:
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-of-all-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of All Commands:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -457,59 +470,99 @@
                   
 
 
-<h1 id="usage">Usage</h1>
+  <h1>Usage</h1>
+
+<h2 id="usage">Usage</h2>
+<h3 id="steps-to-integrate-paac-with-devops-deploy-using-jenkins">Steps to Integrate PAAC with DevOps Deploy using Jenkins</h3>
+<h4 id="illustration-of-an-integration-architecture">Illustration of an Integration Architecture</h4>
+<h5 id="prerequisites">Prerequisites:</h5>
+<ul>
+<li>Jenkins should be installed.</li>
+<li>The PAAC CLI should be present on the machine where the Jenkins server is installed.</li>
+<li>Permissions to update the process being worked on.</li>
+</ul>
+<h5 id="problem-statement">Problem Statement:</h5>
+<p>Need to update an existing process stored in GitHub in JSON format to DevOps Deploy. The process can be of any type: <strong>Generic</strong>, <strong>Component</strong>, or <strong>Application</strong>.</p>
+<h3 id="configurations-needed-in-jenkins">Configurations Needed in Jenkins:</h3>
+<ol>
+<li>
+<p><strong>Create a New Freestyle Project</strong><br />
+   In Jenkins, create a new Freestyle project. Name it something like "Import-process-from-git".</p>
+</li>
+<li>
+<p><strong>Configure the Source Code Management Section</strong><br />
+   Add the Git credentials where the processes are stored.<br />
+<img alt="Image 1" src="../media/Step2.png" /></p>
+</li>
+<li>
+<p><strong>Configure the Build Triggers Section</strong><br />
+   Check the "Poll SCM" checkbox.<br />
+   In the "Schedule" text box, provide <code>* * * * *</code> to poll for changes every minute from the Git repo.<br />
+<img alt="Image 2" src="../media/Step3.png" /></p>
+</li>
+<li>
+<p><strong>Configure the Build Steps Section</strong><br />
+   Add an "Execute Shell" option.<br />
+   In the "Execute Shell" command box, change the current working directory to the directory where the PAAC CLI is present.<br />
+   Then execute the command (refer to the <strong>List of All Commands</strong> section) according to the type of process you're working with.<br />
+<img alt="Image 3" src="../media/Step4.png" /></p>
+</li>
+<li>
+<p><strong>Make Changes to Your JSON File</strong><br />
+   Use any IDE to make changes to the JSON file and push the changes to GitHub.</p>
+</li>
+<li>
+<p><strong>Jenkins Polling and Job Trigger</strong><br />
+   Once changes are merged to the main or master branch (depending on your setup in step 2), Jenkins will poll the repository and trigger a job.<br />
+   This will result in updating the process in DevOps Deploy.</p>
+</li>
+</ol>
 <hr />
-<p>The z/OS Rexx Executor plug-in will execute statements provided in a dataset or inline in the plugin step.</p>
-<p>Select <strong>Source type</strong> as <strong>DATASET</strong> from the drop-down and 
-enter the dataset in the <strong>Source Value</strong>. 
-Fully qualified dataset needs to be enclosed in single quotes.
-When the quotes are omitted then, the TSO prefix of the id running the 
-plugin step is prefixed to the Source Dataset.</p>
-<p>(or)</p>
-<p>Select <strong>Source type</strong> as <strong>INLINE</strong> from the drop-down and 
-then in the <strong>Source Value</strong> enter REXX statements beginning with a <strong>/* REXX */</strong> statement.</p>
-<p>Arguments can be passed to the REXX program with/without quotes. 
-However, if there are more than one argument then arguments must be separated by a space.</p>
-<p>The <strong>SYSPROC</strong> field allows user to pass datasets containing REXX programs 
-that will be used by the REXX program run by the plugin step. 
-Multiple <strong>SYSPROC</strong> datasets can be passed by separating datasets by a comma(,).</p>
-<h3 id="setting-output-property">Setting output property</h3>
-<p>This plugin allows user to set output properties from the REXX program and 
-later to be used in successive steps of a process. 
-A user REXX program can simply invoke a call to <strong>SETPROP</strong> with two arguments.</p>
-<p>The first argument is output property name and 
-the second argument is the property value.</p>
-<blockquote>
-<p>CALL SETPROP propertyName propertyValue</p>
-</blockquote>
-<p>For example, below REXX snippet will set an output property <strong>currentDate</strong> with value of <strong>date</strong> variable</p>
-<hr />
-<pre><code>/* REXX */
-date = DATE('S')  /* Returns date in YYYYMMDD format E.g., 20120327 */
-CALL SETPROP "currentDate" date
-</code></pre>
-<h3 id="setting-multi-line-output-property">Setting multi-line output property</h3>
-<p>To set a multi-line output property, the lines of the property value must be separated 
-by a delimiter returned by inbuilt program <strong>GETDLMTR</strong> </p>
-<hr />
-<pre><code>/* REXX */
-delimiter = GETDLMTR() /* Return delimiter to separate lines */
-lines = "This is first line" || delimiter || "This is second line"  
-CALL SETPROP "outputLines" lines
-</code></pre>
-<p>Will set property <strong>outputLines</strong> to below value</p>
-<hr />
-<pre><code>This is first line
-This is second line
-</code></pre>
-<h3 id="referring-properties-from-successive-steps">Referring properties from successive steps</h3>
-<p>If the rexx step name is <strong>Run-Rexx-Program</strong> and output property name is <strong>currentDate</strong>
-then the output properties can be referred by the successive steps as below</p>
-<blockquote>
-<p>${p:Run-Rexx-Program/currentDate}</p>
-</blockquote>
-<p><strong>Note</strong></p>
-<p>From plugin version 2, an output property <strong>RexxReturnCode</strong> will store the return/exit code from REXX program.</p>
+<h3 id="list-of-all-commands">List of All Commands:</h3>
+<ul>
+<li>
+<p><strong>Download a Generic Process</strong><br />
+<strong>Syntax</strong>:<br />
+<code>download-generic-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;process-name&gt; &lt;output-file&gt;</code><br />
+<strong>Example</strong>:<br />
+<code>download-generic-process myuser mypassword https://url:8443 myGenericProcessName myGenericProcess.json</code></p>
+</li>
+<li>
+<p><strong>Download a Component Process</strong><br />
+<strong>Syntax</strong>:<br />
+<code>download-component-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;component-process-name&gt; &lt;component-name&gt; &lt;output-file&gt;</code><br />
+<strong>Example</strong>:<br />
+<code>download-component-process myuser mypassword https://url:8443 myComponentProcessName myComponentName myComponentProcess.json</code></p>
+</li>
+<li>
+<p><strong>Download an Application Process</strong><br />
+<strong>Syntax</strong>:<br />
+<code>download-application-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;application-process-name&gt; &lt;application-name&gt; &lt;output-file&gt;</code><br />
+<strong>Example</strong>:<br />
+<code>download-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json</code></p>
+</li>
+<li>
+<p><strong>Upload a Generic Process</strong><br />
+<strong>Syntax</strong>:<br />
+<code>upload-generic-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;process-name&gt; &lt;input-file&gt;</code><br />
+<strong>Example</strong>:<br />
+<code>upload-generic-process myuser mypassword https://url:8443 myGenericProcessName myGenericProcess.json</code></p>
+</li>
+<li>
+<p><strong>Upload a Component Process</strong><br />
+<strong>Syntax</strong>:<br />
+<code>upload-component-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;component-process-name&gt; &lt;component-name&gt; &lt;input-file&gt;</code><br />
+<strong>Example</strong>:<br />
+<code>upload-component-process myuser mypassword https://url:8443 myComponentProcessName myComponentName myComponentProcess.json</code></p>
+</li>
+<li>
+<p><strong>Upload an Application Process</strong><br />
+<strong>Syntax</strong>:<br />
+<code>upload-application-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;application-process-name&gt; &lt;application-name&gt; &lt;input-file&gt;</code><br />
+<strong>Example</strong>:<br />
+<code>upload-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json</code></p>
+</li>
+</ul>
 
 
 

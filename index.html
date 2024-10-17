@@ -18,7 +18,7 @@
     
     
       
-        <title>z/OS Rexx Executor</title>
+        <title>PAAC</title>
       
     
     
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://urbancode.github.io/IBM-UCx-PLUGIN-DOCS/UCD/" title="z/OS Rexx Executor" class="md-header__button md-logo" aria-label="z/OS Rexx Executor" data-md-component="logo">
+    <a href="https://urbancode.github.io/IBM-UCx-PLUGIN-DOCS/UCD/" title="PAAC" class="md-header__button md-logo" aria-label="PAAC" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -94,7 +94,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            z/OS Rexx Executor
+            PAAC
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -225,23 +225,6 @@
   
   
     <li class="md-tabs__item">
-      <a href="steps/" class="md-tabs__link">
-        
-  
-    
-  
-  Steps
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
       <a href="usage/" class="md-tabs__link">
         
   
@@ -284,13 +267,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://urbancode.github.io/IBM-UCx-PLUGIN-DOCS/UCD/" title="z/OS Rexx Executor" class="md-nav__button md-logo" aria-label="z/OS Rexx Executor" data-md-component="logo">
+    <a href="https://urbancode.github.io/IBM-UCx-PLUGIN-DOCS/UCD/" title="PAAC" class="md-nav__button md-logo" aria-label="PAAC" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
 
     </a>
-    z/OS Rexx Executor
+    PAAC
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -348,33 +331,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compatibility
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#available-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Available Steps
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#history" class="md-nav__link">
     <span class="md-ellipsis">
       History
@@ -385,18 +341,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#version-2" class="md-nav__link">
+  <a href="#version-10-beta" class="md-nav__link">
     <span class="md-ellipsis">
-      Version 2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#version-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Version 1
+      Version 1.0-Beta
     </span>
   </a>
   
@@ -442,26 +389,6 @@
   
   
     <li class="md-nav__item">
-      <a href="steps/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Steps
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="usage/" class="md-nav__link">
         
   
@@ -492,38 +419,22 @@
 
 <h1 id="overview">Overview</h1>
 <hr />
-<p>The zOS Rexx Executor can run REXX statements provided in a dataset or in the plugin step.</p>
-<p>Apart from executing a REXX program, this plug-in provides ability to create output properties.</p>
-<h2 id="compatibility">Compatibility</h2>
-<p>The plug-in is compatible with:</p>
 <ul>
-<li>UrbanCode Deploy version 7.0.0 or later</li>
-<li>UrbanCode Deploy agents on z/OS</li>
-<li>IBM z/OS version 2.1 or later</li>
-<li>IBM Java 8 or 11</li>
+<li>
+<p>'Devops Deploy' processes allows a user to automate a set of repeatable tasks in a orderly fashion and execute them on configured target machines.</p>
+</li>
+<li>
+<p>Processes can be configured at 3 places in the product, 'Application', 'Component' , 'Processes' and the processes configured here are termed as 'application process', 'component process', 'generic process' respectively.</p>
+</li>
+<li>
+<p>The aim of this project/tool is to allow users to configure their processes in a source code repo like GIT and make it their single source truth and place for users to collaborate to enhance their processes. </p>
+</li>
+<li>
+<p>This tool currently allows users to use json format to define processes and works with existing processes in 'Devops Deploy'.</p>
+</li>
 </ul>
-<h2 id="available-steps">Available Steps</h2>
-<ul>
-<li>Execute a REXX program</li>
-</ul>
-<h2 id="installation">Installation</h2>
-<p>No special steps are required for installation. See <a href="https://community.ibm.com/community/user/wasdevops/blogs/laurel-dickson-bull1/2022/06/13/install-plugins">Installing plug-ins in UrbanCode products</a>.</p>
 <h2 id="history">History</h2>
-<h3 id="version-2">Version 2</h3>
-<ul>
-<li>Added new checkbox input to show debug logs in case of any unknown failure.</li>
-<li>Output will now show the elapsed time of the REXX program</li>
-<li>New output property RexxReturnCode will store the return code of the REXX program</li>
-<li>Fixes output buffer issue when output has too much data</li>
-<li>Arguments can now be as big as 248 characters</li>
-<li>Fixed issue with work directory during two or more parallel step execution</li>
-<li>Minor improvements in temporary directory creation</li>
-<li>Fixed handling of CLIST error message response from ISPF Gateway</li>
-<li>Changes to run process in Legacy ISPF Gateway</li>
-<li>Improvements in ISPF gateway error handling</li>
-<li>Fixed PH62152 - RcException while allocating temporary datasets</li>
-</ul>
-<h3 id="version-1">Version 1</h3>
+<h3 id="version-10-beta">Version 1.0-Beta</h3>
 <ul>
 <li>Initial release</li>
 </ul>

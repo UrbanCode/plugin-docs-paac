@@ -1,16 +1,15 @@
-## Integrations
+## Steps to Integrate PAAC with DevOps Deploy using Jenkins
 
-### Steps to Integrate PAAC with DevOps Deploy using Jenkins
+### Problem Statement:
+Need to update an existing process stored in GitHub in JSON format to DevOps Deploy. The process can be of any type: **Generic**, **Component**, or **Application**.
 
-#### Illustration of an Integration Architecture
+### Illustration of an Integration Architecture
 ![Image 0](media/Step0.png)
-##### Prerequisites:
+
+### Prerequisites:
 - A up and running Jenkins instance.
 - The PAAC CLI should be present on the machine where the Jenkins server is installed.
 - Permissions to update the process being worked on.
-
-##### Problem Statement:
-Need to update an existing process stored in GitHub in JSON format to DevOps Deploy. The process can be of any type: **Generic**, **Component**, or **Application**.
 
 ### Configurations Needed in Jenkins:
 

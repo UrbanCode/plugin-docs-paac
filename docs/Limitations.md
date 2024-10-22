@@ -1,7 +1,3 @@
-## Limitations
-
-### Limitations 
-
 #### With version paac-0.1.0.1171817-beta.zip
 
 * Quotes are not supported in step-names. Such processes may be downloaded but their integrity is questionable.

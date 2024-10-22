@@ -802,12 +802,13 @@
 <ul>
 <li>
 <p>A process file has below a structure
-  <code>{
+  <code>json5
+  {
     "processType": "[ generic|component|application] ",
     "processName": "&lt;name of the process&gt;",
     "parent": "[ | &lt;component-name&gt; | &lt;application-name&gt;]",
     "process": {
-          &lt;...json body of the process steps ...&gt;
+          "&lt;...json body of the process steps ...&gt;"
       }
   }</code></p>
 </li>
@@ -827,17 +828,16 @@
 <p>The structure of a step is composed of step-data that defines the type of step and its attributes and the step workflow data that tells what is the target of the step upon successful (or) unsuccessful termination of the step. Target can be another defined step or be the finish step.</p>
 </li>
 </ul>
-<pre><code>  { 
-    &quot;&lt;name of the step&gt; : {
-          ..step data.. 
-          ..
-          ..
+<pre><code class="language-json5">  { 
+    &quot;&lt;name of the step&gt;&quot; : {
+         &quot; ..step data.. &quot;
+         &quot;  ..&quot;
+         &quot;  ..&quot;
       },
       &quot;on&quot; : {
-          ..step Termination events data..
+          &quot;..step Termination events data..&quot;
       }
     }
-  }
 
 </code></pre>
 <h4 id="termination-events">Termination Events</h4>
@@ -851,43 +851,50 @@ the events can either <b>start</b> an array of one or more steps defined in the 
 </ul>
 <h5 id="termination-event-examples">Termination event Examples</h5>
 <ol>
-<li>
-<p>Example of events calling other steps in successful and unsuccessful scenarios of the current step
-    ```
-    on : {
+<li>Example of events calling other steps in successful and unsuccessful scenarios of the current step
+   ```json5
+    { 
+      "on" : {
+        "success" : {
+            "start" : ["some-step", "some other step"]
+        },
+        "failure" : {
+            "start" : ["handle error condition step"]
+        }
+      }
+    }</li>
+</ol>
+<p><code>2. Examples of events calling the finish step</code>json5
+   {
+    "on" : {
       "success" : {
-          "start" : ["some-step", "some other step"]
-      },
-      "failure" : {
-          "start" : ["handle error condition step"]
+          "finish" : ""
+        }
+     }
+   }</p>
+<p>```</p>
+<p>```json5
+    {
+      "on": {
+        "success": {
+          "finish":""
+        }
       }
     }</p>
-<p><code>2. Examples of events calling the finish step</code>
-on : {
-  "success" : {
-      "finish" :
-  }
-}</p>
-<p>```</p>
-<p>```
-on : {
-  "success" : {
-      "finish" :
-  }
-}</p>
-<p>```</p>
-<p>```
-on : {
-  "success" : {
-      "start" : ["start-server"]
-  },
-  "failure" : {
-      "finish":
-  }
-}</p>
-<p>```</p>
-</li>
-</ol>
+<p><code></code>json5
+    {
+       "on" : {
+         "success": {
+           "start": [
+             "start-server"
+           ]
+         },
+         "failure": {
+           "finish": ""
+         }
+       }
+    }
+  ```</p>
 <p>Note that in the above examples the <b>finish</b> attribute has no value. The finish step does not need a definition and hence there is no need for a target step value.</p>
 <h2 id="step-definitions-types-with-syntax-and-examples">Step Definitions Types with syntax and examples</h2>
 <p>Most of the process steps are explained in https://www.ibm.com/docs/en/devops-deploy/8.0.1?topic=processes-process-steps-reference</p>
@@ -896,7 +903,7 @@ on : {
 <ul>
 <li>
 <p>Syntax
-  ```
+  ```json5
   {</p>
 <p>"<Name of the step>": {
       "type": "plugin",
@@ -923,10 +930,11 @@ on : {
               ]
           }
       }
+  }
   }</p>
 </li>
 </ul>
-<p><code>- Example</code>
+<p><code>- Example</code>json5
      {
        "Download Artifacts for zOS": {
          "type": "plugin",
@@ -949,7 +957,8 @@ on : {
                 ]
             }
          }
-    }
+      } 
+   }
   ```</p>
 <h3 id="run-generic-process-step">Run Generic Process Step</h3>
 <p>Step is available in all types of processes and is used to trigger another generic process</p>
@@ -957,8 +966,8 @@ on : {
 <li>Structure</li>
 <li>
 <p>Syntax
-    ```
-    "{
+    ```json5
+    {
       <Name of the step>": {
         "type": "run-generic-process",
         "process": "<generic process to execute>",
@@ -986,7 +995,7 @@ on : {
 </li>
 <li>
 <p>Example
-    ```
+    ```json5
      {
        "RUN-GENERIC-PROCESS": {
          "type": "run-generic-process",
@@ -1003,6 +1012,7 @@ on : {
                 "finish": ""
             }
          }
+      }
     } </p>
 <p>```</p>
 </li>
@@ -1015,30 +1025,31 @@ on : {
 </li>
 <li>
 <p>Syntax
-    ```
-      "{
-         <name of the step>": {
+    ```json5
+      {
+         "<name of the step>": {
             "type": "application-run-component-process",
             "component": "<component-name>",
             "process": "<process name in the component>",
-            "select-resources-by-tag": "<resources tag uuid>", [optional]
-            "select-resources-by-changed-component-list": {  [optional]
+            "select-resources-by-tag": "<resources tag uuid>", // optional
+            "select-resources-by-changed-component-list": { // optional
               "components": [ <br />
                 "<list of components separated by comma>" <br />
               ], <br />
-              "select-resources": "with-changed-component" | "ALL" 
-            }
-            "runOnlyOnFirst":false, [optional]
-            "failFast":false,  [optional]
-            "maxIteration":"-1",  [optional]
-            "isIgnoreChildWarnings":false,  [optional]
+              "select-resources": ["with-changed-component | ALL"]
+            },
+            "runOnlyOnFirst":false, // optional
+            "failFast":false,  // optional 
+            "maxIteration":"-1",  // optional
+            "isIgnoreChildWarnings":false,  // optional
             "on": {
               "success": {
                   "finish": ""
               }
-         }
-      }</p>
-<p><code>- Example-1</code>
+          }
+        }
+     }</p>
+<p><code>- Example-1</code>json5
 { 
   "run-component-PAC-COMP": {
       "type": "application-run-component-process", 
@@ -1053,8 +1064,9 @@ on : {
               "finish": ""
           }
       }
-  }
-<code>- Example-2 : with minimal fields</code><br />
+   }
+   }
+   <code>- Example-2 : with minimal fields</code>json5
 {<br />
   "run-component-PAC-COMP": {
     "type": "application-run-component-process", 
@@ -1065,6 +1077,7 @@ on : {
               "finish": ""
          }
     }
+  }
 }
 ```</p>
 </li>
@@ -1074,7 +1087,8 @@ on : {
 <li>This step is applicable within a component process to trigger another component process.</li>
 <li>The callee component process should be already defined to prevent unexpected behaviour.</li>
 <li>Syntax
-    <code>{
+    <code>json5
+    {
         "&lt;name of the step&gt;": {
           "type": "component-run-component-process",
           "process": "&lt;name of the component process&gt;",
@@ -1083,9 +1097,11 @@ on : {
                   "finish": ""
               }
           }
-      }</code></li>
+      }
+    }</code></li>
 <li>Example
-    <code>{
+    <code>json5
+    {
         "run-a-component-process": {
             "type": "component-run-component-process",
             "process": "LESS-COMPREHENSIVE-PROCESS",
@@ -1094,7 +1110,8 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></li>
+        }
+    }</code></li>
 </ul>
 <h3 id="acquire-lock-step">Acquire Lock Step</h3>
 <ul>
@@ -1102,8 +1119,9 @@ on : {
 <li>To release the lock, use the Release lock step. Also, locks are released automatically when the process finishes.</li>
 <li>This step applies to application processes, component processes, and generic processes.</li>
 <li>Syntax
-  <code>{
-    &lt;name of the step&gt;: {
+  <code>json5
+  {
+    "&lt;name of the step&gt;": {
         "type": "acquire-lock",
         "lock": "&lt;lock-expression&gt;",
         "on": {
@@ -1113,21 +1131,21 @@ on : {
                 ]
             }
         }
-    }</code></li>
+     }
+   }</code></li>
 <li>Example
-  ```
-  {
+  ```json5
+   {
       "acquire-lock-on-component-resource": {
         "type": "acquire-lock",
         "lock": "${p:component.name}-${p:componentProcess.name}-${p:resource.name}",
         "on": {
             "success": {
-                "start": [
-                    "RUN-DB-UPGRADE-STEP"
-                ]
+                "start": ["RUN-DB-UPGRADE-STEP"]
             }
         }
-      }</li>
+      }
+   }</li>
 </ul>
 <p>```</p>
 <h3 id="release-lock-step">Release Lock Step</h3>
@@ -1135,8 +1153,9 @@ on : {
 <li>This step releases a lock on a specified string value.</li>
 <li>This step applies to application processes, component processes, and generic processes.</li>
 <li>Syntax
-  <code>{
-    &lt;name of the step&gt;: {
+  <code>json5
+  {
+    "&lt;name of the step&gt;": {
         "type": "release-lock",
         "lock": "&lt;lock-expression&gt;",
         "on": {
@@ -1146,9 +1165,10 @@ on : {
                 ]
             }
         }
-    }</code></li>
+    }
+  }</code></li>
 <li>Example
-  ```
+  ```json5
   {
       "release-lock-on-component-resource": {
         "type": "release-lock",
@@ -1160,7 +1180,8 @@ on : {
                 ]
             }
         }
-      }</li>
+      }
+  }</li>
 </ul>
 <p>```</p>
 <h3 id="switch-step">Switch Step</h3>
@@ -1169,8 +1190,9 @@ on : {
 <li>Evaluate is a mandatory field that should have a property which will resolve to a case</li>
 <li>Applications, components, and generic processes share some process steps.</li>
 <li>Syntax
-  <code>{
-    &lt;name of the step&gt; : {
+  <code>json5
+  {
+    "&lt;name of the step&gt;" : {
         "type": "switch",
         "evaluate": "&lt;property that evaluates to a switch case&gt;",
         "case": {
@@ -1185,15 +1207,15 @@ on : {
                     "&lt;some-other-step&gt;"
                 ]
             },
-            "DEFAULT": {           [optional]      
-                "start": [
-                    "&lt;default-step&gt;"
-                ]
+            "DEFAULT": {         // optional    
+                "start": ["&lt;default-step&gt;" ]
             }
         }
-    }</code></li>
+     }
+   }</code></li>
 <li>Example
-  <code>{
+  <code>json5
+  {
   "Run Necessary Shell based on Request property" : {
         "type": "switch",
         "evaluate": "${p:AppProcessRequestProperty}",
@@ -1215,7 +1237,8 @@ on : {
                 ]
             }
         }
-    }</code></li>
+      }
+   }</code></li>
 </ul>
 <h3 id="add-inventory-step">Add inventory step</h3>
 <ul>
@@ -1223,7 +1246,8 @@ on : {
 <li>The component resource that the process is running against will have an inventory entry created for it with the specified status.</li>
 <li>Status is mandatory field</li>
 <li>Syntax
-    <code>{
+    <code>json5
+    {
        "&lt;name of the step&gt;" : {
         "type": "add-inventory-status",
         "status": "&lt;desired-inventory-status&gt;",
@@ -1234,9 +1258,12 @@ on : {
                 ]
             }
         }
+      }
     }</code></li>
 <li>example
-  <code>"add-acitve-status-to-inventory": {
+  <code>json5
+   {
+    "add-acitve-status-to-inventory": {
         "type": "add-inventory-status",
         "status": "Active",
         "on": {
@@ -1246,7 +1273,8 @@ on : {
                 ]
             }
         }
-    }</code></li>
+     }
+   }</code></li>
 </ul>
 <h3 id="remove-inventory-step">Remove Inventory Step</h3>
 <ul>
@@ -1254,17 +1282,22 @@ on : {
 <li>The component resource that the process is running against will have an inventory entry removed from it.</li>
 <li>status is mandatory</li>
 <li>Syntax
-    <code>"&lt;name of the step&gt;:{
-        "type": "remove-inventory-status",
-        "status": "&lt;inventory-status&gt;",
-        "on": {
+    <code>json5
+      { 
+        "&lt;name of the step&gt;" : {
+          "type": "remove-inventory-status",
+          "status": "&lt;inventory-status&gt;",
+          "on": {
             "success": {
                 "start": "&lt;next-step&gt;"
             }
+          }
         }
-    }</code></li>
+     }</code></li>
 <li>Example
-  <code>"Remove version status":{
+  <code>json5
+   {
+    "Remove version status":{
         "type": "remove-inventory-status",
         "status": "active",
         "on": {
@@ -1272,13 +1305,16 @@ on : {
                 "start": "shell-step"
             }
         }
+      }
     }</code></li>
 </ul>
 <h3 id="add-warning-step">Add warning Step</h3>
 <ul>
 <li>message is mandatory</li>
 <li>Syntax
-    <code>"&lt;name of the step&gt;" : {
+    <code>json5
+    {
+    "&lt;name of the step&gt;" : {
         "type": "add-process-warning",
         "message": "Warning message here..",
         "on": {
@@ -1288,11 +1324,13 @@ on : {
                 ]
             }
         }
+      }
     }</code></li>
 <li>
 <p>Example
-    ```
-    "warning about some stuff in process":{
+    ```json5
+    {
+      "warning about some stuff in process": {
         "type": "add-process-warning",
         "message": "Step may not have worked",
         "on": {
@@ -1301,7 +1339,8 @@ on : {
                     "install-web-component"
                 ]
             }
-        }
+         }
+       }
     }</p>
 <p>```</p>
 <h3 id="join-step">Join step</h3>
@@ -1313,7 +1352,7 @@ on : {
 </li>
 <li>
 <p>Syntax
-  ```
+  ```json5
        {
         "<name of the step>": {
             "type": "join",
@@ -1324,7 +1363,7 @@ on : {
      }</p>
 </li>
 </ul>
-<p><code>- Example</code>
+<p><code>- Example</code>json5
      {
         "join-step-1": {
             "type": "join",
@@ -1341,7 +1380,7 @@ on : {
 <li>When multiple approvals are given deploying-user takes precedence over 'role-restrictions' and 'any-user' takes last precedence</li>
 <li>When deployingUserOnly is set to false or not provided and roleRestrictionData is empty or not provided then 'any-user' can approve the task</li>
 <li>Syntax
-  ```
+  ```json5
     {
         "<name of the step>": {
         "type": "application-manual-task",
@@ -1356,10 +1395,12 @@ on : {
                     "DEPLOY-BY-ROLE-MEMBERS-ENVIRONMENT"
                 ]
             }
-        }
+        } 
+      }
     }</li>
 </ul>
-<p><code>- Example</code>
+<p><code>- Example</code>json5
+    {
       "AUTOMATION-ENGINEER-APPROVAL": {
         "type": "application-manual-task",
         "deployingUserOnly": "false",
@@ -1377,6 +1418,7 @@ on : {
                 ]
             }
         }
+      }
     }
   ```</p>
 <h3 id="run-operational-process-for-multiple-components">Run operational process for multiple components</h3>
@@ -1386,20 +1428,20 @@ on : {
 </li>
 <li>
 <p>Syntax
-  ```
+  ```json5
    {
       "<name of the step>": {
            "type": "run-operational-process-for-multiple-components",
            "name": "<name of the step>",
            "process": "<name of the component process>",
-           "select-components-by-tag": "<uuid of the component tag>", [optional]
-           "select-resources-by-tag": "<uuid of the resource tag>", [optional]
-           "fail-fast": boolean,
-           "ignore-child-warnings": boolean,
-           "run-on-first-online-resource-only": boolean,
+           "select-components-by-tag": "<uuid of the component tag>",
+           "select-resources-by-tag":  "<uuid of the resource tag>", 
+           "fail-fast": false,// boolean
+           "ignore-child-warnings": false,// boolean
+           "run-on-first-online-resource-only": false, // boolean
            "max-concurrent-processes": "[unlimited | a positive integer]",
            "max-concurrent-components": "[unlimited | a positive integer]",
-           "precondition-script": "\"TRUE\"",[optional]
+           "precondition-script": "\"TRUE\"", 
            "on": {
                "success": {
                    "finish": ""
@@ -1409,7 +1451,7 @@ on : {
    }</p>
 </li>
 </ul>
-<p><code>- Example-1</code>
+<p><code>- Example-1</code>json5
    {
       "OPERATIONAL-PROCESS-FOR-COMPONENTS": {
            "type": "run-operational-process-for-multiple-components",
@@ -1432,7 +1474,7 @@ on : {
    }</p>
 <p>```
 - Example-2</p>
-<p>```
+<p>```json5
   {
        "OPERATIONAL-PROCESS-FOR-COMPONENTS": {
            "type": "run-operational-process-for-multiple-components",
@@ -1458,7 +1500,7 @@ on : {
 </li>
 <li>
 <p>Syntax
- ```
+ ```json5
     {
         "<name of the step>": {
             "type": "rollback-multiple-components",
@@ -1481,7 +1523,8 @@ on : {
 <p>```</p>
 <ul>
 <li>Example
-  <code>{
+  <code>json5
+    {
          "rollback multiple steps": {
             "type": "rollback-multiple-components",
             "process": "ROLLBACK-VERSION",
@@ -1504,14 +1547,15 @@ on : {
 <ul>
 <li>
 <p>Syntax
-   <code>{ 
+   <code>json5
+    { 
         "&lt;name of the step&gt;": {
             "type": "rollback-component",
             "component": "&lt;component name&gt;",
             "process": "&lt;component process name&gt;",
             "rollback-type": "[remove-undesired-incremental-versions | replace-with-last-deployed]",
             "select-versions-with-inventory-status": "&lt;a valid version inventory status, usually it is set as ACTIVE&gt;",
-            "fail-fast": boolean,
+            "fail-fast": false,  // boolean
             "ignore-child-warnings": boolean,
             "max-concurrent-processes": "[unlimited | a positive integer]",
             "on": {
@@ -1519,11 +1563,13 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></p>
+        }
+   }</code></p>
 </li>
 <li>
 <p>Example
-   <code>{ 
+   ```json5
+       { 
         "Rollback PAC-COMP": {
             "type": "rollback-component",
             "component": "PAC-COMP",
@@ -1542,9 +1588,11 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></p>
+        }
+     }</p>
 </li>
 </ul>
+<p>```</p>
 <h3 id="uninstall-component">Uninstall Component</h3>
 <ul>
 <li>
@@ -1552,8 +1600,8 @@ on : {
 </li>
 <li>
 <p>Syntax
-  ```
-  {
+  ```json5
+   {
       "<name of the step>": {
         "type": "uninstall-component",
         "component": "<component name>",
@@ -1568,10 +1616,11 @@ on : {
                 "finish": ""
             }
         }
-    }</p>
+     }
+   }</p>
 </li>
 </ul>
-<p><code>- Example</code>
+<p><code>- Example</code>json5
   {
       "Uninstall-PAC-COMP": {
         "type": "uninstall-component",
@@ -1591,7 +1640,8 @@ on : {
                 "finish": ""
             }
         }
-    }</p>
+    }
+  }</p>
 <p>```</p>
 <h3 id="uninstall-multiple-components">Uninstall Multiple Components</h3>
 <ul>
@@ -1600,7 +1650,8 @@ on : {
 </li>
 <li>
 <p>Syntax
-    <code>{ 
+    <code>json5
+    { 
         "&lt;name of the step&gt;": {
             "type": "uninstall-multiple-components",
             "process": "&lt;component process name&gt;",
@@ -1617,10 +1668,12 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></p>
+        }
+    }</code></p>
 </li>
 <li>Example
-    <code>{ 
+    <code>json5
+    { 
         "uninstall-multiple-components": {
             "type": "uninstall-multiple-components",
             "process": "REMOVE-VERSION",
@@ -1637,7 +1690,8 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></li>
+        }
+    }</code></li>
 </ul>
 <h3 id="install-component">Install Component</h3>
 <ul>
@@ -1646,25 +1700,29 @@ on : {
 </li>
 <li>
 <p>Syntax
-    <code>"&lt;name of the step&gt;": {
+    <code>json5
+    {
+       "&lt;name of the step&gt;" : {
         "type": "install-component",
         "component": "&lt;component name&gt;",
         "process": "&lt;component process name&gt;",
         "select-versions-without-inventory-status": "&lt;version status in inventory usually set to ACTIVE&gt;",
-        "select-resources-by-tag": "&lt;uuid of the resource tag&gt;", [optional]
-        "fail-fast": boolean,
-        "ignore-child-warnings": boolean,
+        "select-resources-by-tag": "&lt;uuid of the resource tag&gt;",
+        "fail-fast": false,  // boolean
+        "ignore-child-warnings": false, // boolean 
         "max-concurrent-processes": "[unlimited | a positive integer]",
         "on": {
             "success": {
                 "finish": ""
             }
         }
+      }
     }</code></p>
 </li>
 <li>
 <p>Example
-    <code>{
+    <code>json5
+      {
           "Install PAC-COMP": {
             "type": "install-component",
             "component": "PAC-COMP",
@@ -1679,7 +1737,8 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></p>
+        }
+      }</code></p>
 </li>
 </ul>
 <h3 id="install-multiple-components">Install Multiple Components</h3>
@@ -1689,13 +1748,14 @@ on : {
 </li>
 <li>
 <p>Syntax
-    <code>{ 
+    <code>json5
+       { 
           "&lt;name of the step&gt;": {
             "type": "install-multiple-components",
             "process": "&lt;component process&gt;",
             "select-versions-without-inventory-status": "&lt;version status in inventory usually set to ACTIVE&gt;",
-            "select-components-by-tag": "&lt;uuid of the component tag&gt;", [optional]
-            "select-resources-by-tag": "&lt;uuid of the resource tag&gt;", [optional]
+            "select-components-by-tag": "&lt;uuid of the component tag&gt;", // optional
+            "select-resources-by-tag": "&lt;uuid of the resource tag&gt;", // optional
             "fail-fast": boolean,
             "ignore-child-warnings": boolean,
             "max-concurrent-processes": "[unlimited | a positive integer]",
@@ -1705,11 +1765,13 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></p>
+          }
+       }</code></p>
 </li>
 <li>
 <p>Example
-    <code>{ 
+    <code>json5
+       { 
           "install-multiple components": {
             "type": "install-multiple-components",
             "process": "install-version",
@@ -1725,7 +1787,8 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></p>
+         }
+       }</code></p>
 </li>
 </ul>
 <h3 id="run-process-for-each-version">Run process for each version</h3>
@@ -1735,7 +1798,7 @@ on : {
 </li>
 <li>
 <p>Syntax
-    ```
+    ```json5
      {
         "<name o the step>": {
             "type": "run-process-for-each-version",
@@ -1743,15 +1806,16 @@ on : {
             "process": "<process name>",
             "fail-fast": boolean,
             "ignore-child-warnings": boolean,
-            "run-on-first-online-resource-only": boolean,
+            "run-on-first-online-resource-only": false ,// boolean
             "max-concurrent-processes": "[unlimited | a positive integer]",
             "on": {
                 "success": {
                     "finish": ""
                 }
             }
-        }</p>
-<p><code>- Example</code>
+        }
+     }</p>
+<p><code>- Example</code>json5
  {
     "Run process for each version": {
         "type": "run-process-for-each-version",
@@ -1766,7 +1830,8 @@ on : {
                 "finish": ""
             }
         }
-    }</p>
+    }
+}</p>
 <p>```</p>
 </li>
 </ul>
@@ -1778,11 +1843,12 @@ on : {
 </li>
 <li>
 <p>Syntax
-    <code>{
-        "&lt;name o the step&gt;": {
+    <code>json5
+     {
+        "&lt;name of the step&gt;": {
             "type": "for-each-agent",
-            "child-process": &lt;process json that has to run on each agent&gt;,
-            "tag": [],
+            "child-process": "&lt;process json that has to run on each agent&gt;",
+            "tag": [], // zero or more tag ids within quotes separated by comma
             "max-concurrent-agents": "[unlimited | a positive integer]",
             "on": {
                 "success": {
@@ -1791,10 +1857,12 @@ on : {
                     ]
                 }
             }
-        }</code></p>
+        }
+    }</code></p>
 </li>
 <li>Example
-    <code>{
+    <code>json5
+     {
         "APPLY-CONFIG-TOAGENT": {
             "type": "for-each-agent",
             "child-process": {
@@ -1833,13 +1901,14 @@ on : {
                     ]
                 }
             }
-        }</code></li>
+        }
+    }</code></li>
 </ul>
 <h3 id="run-process-for-each-resource">Run process for each resource</h3>
 <ul>
 <li>
 <p>Syntax
-    ```
+    ```json5
     {
         "RESOURCE-TAG": {
             "type": "for-each-resource-tag",
@@ -1856,7 +1925,7 @@ on : {
                 }
             }
         }</p>
-<p><code>- Example</code>
+<p><code>- Example</code>json5
 {
     "RESOURCE-TAG": {
         "type": "for-each-resource-tag",
@@ -1892,7 +1961,8 @@ on : {
                 ]
             }
         }
-    }</p>
+    }
+ }</p>
 <p>```</p>
 </li>
 </ul>
@@ -1901,22 +1971,25 @@ on : {
 <li>This step applies only to application processes.</li>
 <li>This step runs a component process of the type Operational (No Version Needed) or Configuration Deployment.</li>
 <li>Syntax
-    <code>{ 
+    <code>json5
+     { 
         "&lt;name of the step&gt;": {
             "type": "apply-configuration",
             "component": "&lt;component name&gt;",
             "process": "&lt;componpent process name&gt;",
-            "fail-fast": boolean,
-            "ignore-child-warnings": boolean,
+            "fail-fast": false, // boolean value
+            "ignore-child-warnings": false, // boolean value 
             "max-concurrent-processes": "[unlimited | a positive integer]",
             "on": {
                 "success": {
                     "finish": ""
                 }
             }
-        }</code></li>
+        }
+     }</code></li>
 <li>Example
-    <code>{ 
+    <code>json5
+     { 
         "Apply-config-operation": {
             "type": "apply-configuration",
             "component": "PAC-COMP",
@@ -1935,24 +2008,18 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></li>
+        }
+     }</code></li>
 </ul>
 <h3 id="generic-manual-step">Generic Manual step</h3>
 <ul>
 <li>Syntax
-  <code>{ 
+  <code>json
+    { 
      "&lt;name of the step&gt;": {
           "type": "generic-manual-task",
           "restrict-approval-to": {
-              "[ deploying-user | identities ]": "[ | {
-                                                         "users": [
-                                                             "&lt;user-1&gt;",
-                                                             "&lt;user-n&gt;"
-                                                         ],
-                                                         "groups": [
-                                                             "&lt;group-1&gt;"
-                                                         ]
-                                                     } ]"
+              "[ deploying-user | identities ]": {  "users": [ "&lt;user-1&gt;", "&lt;user-n&gt;"], "groups": ["&lt;group-1&gt;"] }
           },
           "notification-template": "TaskCreated",
           "comment-required": false,
@@ -1961,12 +2028,13 @@ on : {
                   "finish": ""
               }
           }
-      }
+       }
     }</code></li>
 <li>When the approval restriction is set to "deploying-user" not value is required for that field</li>
 <li>Apart from setting approval to "deploying-user", one may also choose selected users or groups of a combination of both</li>
 <li>Example-1 with approval restricted to 'deploying user'
-   <code>{ 
+   <code>json5
+     { 
       "MANUAL-TASKS": {
            "type": "generic-manual-task",
            "restrict-approval-to": {
@@ -1984,7 +2052,8 @@ on : {
 <li>Example-2 with approval restricted to identities</li>
 <li>
 <p>In this example the restriction is set to users 'deploy', 'admin' and group 'Administrators'.
-  <code>{ 
+  <code>json5
+      { 
         "MANUAL-TASKS": {
             "type": "generic-manual-task",
             "restrict-approval-to": {
@@ -1998,11 +2067,13 @@ on : {
                     ]
                 }
             }
+         }  
       }</code></p>
 </li>
 <li>
 <p>Example-3 with property definitions
- <code>{ 
+ <code>json5
+        { 
            "MANUAL-TASKS": {
             "type": "generic-manual-task",
             "restrict-approval-to": {
@@ -2100,7 +2171,8 @@ on : {
                     "finish": ""
                 }
             }
-        }</code></p>
+         }
+      }</code></p>
 </li>
 </ul>
 

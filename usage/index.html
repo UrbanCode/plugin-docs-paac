@@ -800,21 +800,19 @@
 </ul>
 <h3 id="structure-of-process-file">Structure of Process file</h3>
 <ul>
-<li>
-<p>A process file has below a structure
-  <code>json5
-  {
-    "processType": "[ generic|component|application] ",
-    "processName": "&lt;name of the process&gt;",
-    "parent": "[ | &lt;component-name&gt; | &lt;application-name&gt;]",
-    "process": {
-          "&lt;...json body of the process steps ...&gt;"
+<li>A process file has below a structure</li>
+</ul>
+<pre><code class="language-json5">  {
+    &quot;processType&quot;: &quot;[ generic|component|application] &quot;,
+    &quot;processName&quot;: &quot;&lt;name of the process&gt;&quot;,
+    &quot;parent&quot;: &quot;[ | &lt;component-name&gt; | &lt;application-name&gt;]&quot;,
+    &quot;process&quot;: {
+          //&quot;&lt;...json body of the process steps ...&gt;&quot;
       }
-  }</code></p>
-</li>
-<li>
-<p>A process in the above structure is mapped to a json that has multiple process step definitions. there are multiple types of steps that are supported in <b> Devops Deploy</b> </p>
-</li>
+  }     
+</code></pre>
+<ul>
+<li>A process in the above structure is mapped to a json that has multiple process step definitions. there are multiple types of steps that are supported in <b> Devops Deploy</b> </li>
 </ul>
 <h3 id="process-step-definitions">Process step definitions</h3>
 <ul>
@@ -850,51 +848,52 @@
 the events can either <b>start</b> an array of one or more steps defined in the process or can terminate at the <b>finish </b> step</li>
 </ul>
 <h5 id="termination-event-examples">Termination event Examples</h5>
-<ol>
-<li>Example of events calling other steps in successful and unsuccessful scenarios of the current step
-   ```json5
-    { 
-      "on" : {
-        "success" : {
-            "start" : ["some-step", "some other step"]
+<ul>
+<li>Example of events calling other steps in successful and unsuccessful scenarios of the current step</li>
+</ul>
+<pre><code class="language-json5">    { 
+      &quot;on&quot; : {
+        &quot;success&quot; : {
+            &quot;start&quot; : [&quot;some-step&quot;, &quot;some other step&quot;]
         },
-        "failure" : {
-            "start" : ["handle error condition step"]
+        &quot;failure&quot; : {
+            &quot;start&quot; : [&quot;handle error condition step&quot;]
         }
       }
-    }</li>
-</ol>
-<p><code>2. Examples of events calling the finish step</code>json5
-   {
-    "on" : {
-      "success" : {
-          "finish" : ""
-        }
-     }
-   }</p>
-<p>```</p>
-<p>```json5
-    {
-      "on": {
-        "success": {
-          "finish":""
-        }
-      }
-    }</p>
-<p><code></code>json5
-    {
-       "on" : {
-         "success": {
-           "start": [
-             "start-server"
-           ]
-         },
-         "failure": {
-           "finish": ""
-         }
-       }
     }
-  ```</p>
+</code></pre>
+<ul>
+<li>Examples of events calling the finish step</li>
+</ul>
+<pre><code class="language-json5">  {
+  &quot;on&quot; : {
+    &quot;success&quot; : {
+        &quot;finish&quot; : &quot;&quot;
+      }
+   }
+  }
+</code></pre>
+<pre><code class="language-json5">  {
+    &quot;on&quot;: {
+      &quot;success&quot;: {
+        &quot;finish&quot;:&quot;&quot;
+      }
+    }
+  }
+</code></pre>
+<pre><code class="language-json5">  {
+     &quot;on&quot; : {
+       &quot;success&quot;: {
+         &quot;start&quot;: [
+           &quot;start-server&quot;
+         ]
+       },
+       &quot;failure&quot;: {
+         &quot;finish&quot;: &quot;&quot;
+       }
+     }
+  }
+</code></pre>
 <p>Note that in the above examples the <b>finish</b> attribute has no value. The finish step does not need a definition and hence there is no need for a target step value.</p>
 <h2 id="step-definitions-types-with-syntax-and-examples">Step Definitions Types with syntax and examples</h2>
 <p>Most of the process steps are explained in https://www.ibm.com/docs/en/devops-deploy/8.0.1?topic=processes-process-steps-reference</p>

@@ -1,5 +1,3 @@
-## Usage
-
 ### List of All Commands:
 
 - **Download a Generic Process**  

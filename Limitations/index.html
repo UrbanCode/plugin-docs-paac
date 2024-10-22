@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Limitations/">
+        <link rel="prev" href="../Integrations/">
       
       
-        <link rel="next" href="../usage/">
+        <link rel="next" href="../downloads/">
       
       
       <link rel="icon" href="../None">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Downloads - PAAC</title>
+        <title>Limitations - PAAC</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#downloads" class="md-skip">
+        <a href="#limitations" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Downloads
+              Limitations
             
           </span>
         </div>
@@ -223,9 +223,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../Limitations/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -240,11 +242,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../downloads/" class="md-tabs__link">
         
   
     
@@ -358,26 +358,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../Limitations/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Limitations
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -387,10 +367,96 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Limitations
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Limitations
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitations_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-version-paac-0101171817-betazip" class="md-nav__link">
+    <span class="md-ellipsis">
+      With version paac-0.1.0.1171817-beta.zip
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -399,7 +465,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -439,10 +504,17 @@
                   
 
 
-<h1 id="downloads">Downloads</h1>
-<hr />
+  <h1>Limitations</h1>
+
+<h2 id="limitations">Limitations</h2>
+<h3 id="limitations_1">Limitations</h3>
+<h4 id="with-version-paac-0101171817-betazip">With version paac-0.1.0.1171817-beta.zip</h4>
 <ul>
-<li><a href="https://raw.githubusercontent.com/UrbanCode/IBM-UCD-PLUGINS/main/files/PAAC/paac-0.1.0.1171817-beta.zip">paac-0.1.0.1171817-beta.zip</a></li>
+<li>Quotes are not supported in step-names. Such processes may be downloaded but their integrity is questionable.</li>
+<li>New processes cannot be created in this version.</li>
+<li>Secured properties are not supported. To use secure properties, one may define a secure property in any entity such as component, environment, resource etc and refer that property name in the process property</li>
+<li>Post-processing Scripts are not fully supported. (What I mean by it is we do not store those scripts in separate files like we do for shell step and groovy steps, so the script may not be in a desirable format)</li>
+<li>Limited support for modifying tags. Tags can only be seen by their uuid and not by their real user-defined names</li>
 </ul>
 
 

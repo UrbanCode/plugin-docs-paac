@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Limitations/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../usage/">
+        <link rel="next" href="../Limitations/">
       
       
       <link rel="icon" href="../None">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Downloads - PAAC</title>
+        <title>Integrations - PAAC</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#downloads" class="md-skip">
+        <a href="#integrations" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Downloads
+              Integrations
             
           </span>
         </div>
@@ -206,9 +206,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../Integrations/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -240,11 +242,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../downloads/" class="md-tabs__link">
         
   
     
@@ -338,10 +338,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Integrations/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -350,6 +368,96 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-integrate-paac-with-devops-deploy-using-jenkins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Integrate PAAC with DevOps Deploy using Jenkins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steps to Integrate PAAC with DevOps Deploy using Jenkins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#illustration-of-an-integration-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Illustration of an Integration Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Illustration of an Integration Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem Statement:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurations-needed-in-jenkins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurations Needed in Jenkins:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -378,19 +486,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -399,7 +498,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -439,11 +537,55 @@
                   
 
 
-<h1 id="downloads">Downloads</h1>
-<hr />
+  <h1>Integrations</h1>
+
+<h2 id="integrations">Integrations</h2>
+<h3 id="steps-to-integrate-paac-with-devops-deploy-using-jenkins">Steps to Integrate PAAC with DevOps Deploy using Jenkins</h3>
+<h4 id="illustration-of-an-integration-architecture">Illustration of an Integration Architecture</h4>
+<p><img alt="Image 0" src="../media/Step0.png" /></p>
+<h5 id="prerequisites">Prerequisites:</h5>
 <ul>
-<li><a href="https://raw.githubusercontent.com/UrbanCode/IBM-UCD-PLUGINS/main/files/PAAC/paac-0.1.0.1171817-beta.zip">paac-0.1.0.1171817-beta.zip</a></li>
+<li>A up and running Jenkins instance.</li>
+<li>The PAAC CLI should be present on the machine where the Jenkins server is installed.</li>
+<li>Permissions to update the process being worked on.</li>
 </ul>
+<h5 id="problem-statement">Problem Statement:</h5>
+<p>Need to update an existing process stored in GitHub in JSON format to DevOps Deploy. The process can be of any type: <strong>Generic</strong>, <strong>Component</strong>, or <strong>Application</strong>.</p>
+<h3 id="configurations-needed-in-jenkins">Configurations Needed in Jenkins:</h3>
+<ol>
+<li>
+<p><strong>Create a New Freestyle Project</strong><br />
+   In Jenkins, create a new Freestyle project. Name it something like "Import-process-from-git".</p>
+</li>
+<li>
+<p><strong>Configure the Source Code Management Section</strong><br />
+   Add the Git credentials where the processes are stored.<br />
+<img alt="Image 1" src="../media/Step2.png" /></p>
+</li>
+<li>
+<p><strong>Configure the Build Triggers Section</strong><br />
+   Check the "Poll SCM" checkbox.<br />
+   In the "Schedule" text box, provide <code>* * * * *</code> to poll for changes every minute from the Git repo.<br />
+<img alt="Image 2" src="../media/Step3.png" /></p>
+</li>
+<li>
+<p><strong>Configure the Build Steps Section</strong><br />
+   Add an "Execute Shell" option.<br />
+   In the "Execute Shell" command box, change the current working directory to the directory where the PAAC CLI is present.<br />
+   Then execute the command (refer to the <strong>List of All Commands</strong> section) according to the type of process you're working with.<br />
+<img alt="Image 3" src="../media/Step4.png" /></p>
+</li>
+<li>
+<p><strong>Make Changes to Your JSON File</strong><br />
+   Use any IDE to make changes to the JSON file and push the changes to GIT.</p>
+</li>
+<li>
+<p><strong>Jenkins Polling and Job Trigger</strong><br />
+   Once changes are merged to the main or master branch (depending on your setup in step 2), Jenkins will poll the repository and trigger a job.<br />
+   This will result in updating the process in DevOps Deploy.</p>
+</li>
+</ol>
+<hr />
 
 
 

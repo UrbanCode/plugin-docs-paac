@@ -774,7 +774,6 @@ Step is available in all types of processes and is used to trigger another gener
                 }
             }
         }
-    
  ```
 
 - Example

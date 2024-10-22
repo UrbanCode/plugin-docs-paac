@@ -1500,14 +1500,14 @@ the events can either <b>start</b> an array of one or more steps defined in the 
 </li>
 <li>
 <p>Syntax
- ```json5
+ <code>json5
     {
-        "<name of the step>": {
+        "&lt;name of the step&gt;": {
             "type": "rollback-multiple-components",
-            "process": "<name of the component process>",
+            "process": "&lt;name of the component process&gt;",
             "rollback-type": "[remove-undesired-incremental-versions | replace-with-last-deployed]",
-            "select-versions-with-inventory-status": "<a valid version inventory status, usually it is set as ACTIVE>",
-            "select-components-by-tag": "<component tag>",
+            "select-versions-with-inventory-status": "&lt;a valid version inventory status, usually it is set as ACTIVE&gt;",
+            "select-components-by-tag": "&lt;component tag&gt;",
             "fail-fast": boolean,
             "ignore-child-warnings": boolean,
             "max-concurrent-processes": "[unlimited | a positive integer]",
@@ -1517,12 +1517,10 @@ the events can either <b>start</b> an array of one or more steps defined in the 
                     "finish": ""
                 }
             }
-        }</p>
+        }</code></p>
 </li>
-</ul>
-<p>```</p>
-<ul>
-<li>Example
+<li>
+<p>Example
   <code>json5
     {
          "rollback multiple steps": {
@@ -1540,7 +1538,8 @@ the events can either <b>start</b> an array of one or more steps defined in the 
                     "finish": ""
                 }
             }
-        }</code></li>
+        }</code></p>
+</li>
 </ul>
 <h3 id="rollback-component">Rollback Component</h3>
 <p>This step applies only to application processes.</p>

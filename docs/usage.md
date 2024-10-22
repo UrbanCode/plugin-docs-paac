@@ -39,16 +39,16 @@
 ### Structure of Process file
 
 * A process file has below a structure
-  ```json5
+```json5
   {
     "processType": "[ generic|component|application] ",
     "processName": "<name of the process>",
     "parent": "[ | <component-name> | <application-name>]",
     "process": {
-          "<...json body of the process steps ...>"
+          //"<...json body of the process steps ...>"
       }
   }     
-  ```
+```
 
 * A process in the above structure is mapped to a json that has multiple process step definitions. there are multiple types of steps that are supported in <b> Devops Deploy</b> 
 
@@ -99,41 +99,39 @@ the events can either <b>start</b> an array of one or more steps defined in the 
   
    ```
 2. Examples of events calling the finish step
-   ```json5
-   {
-    "on" : {
-      "success" : {
-          "finish" : ""
-        }
-     }
+```json5
+  {
+  "on" : {
+    "success" : {
+        "finish" : ""
+      }
    }
+  }
+```
 
-   ```
-
-  ```json5
-    {
-      "on": {
-        "success": {
-          "finish":""
-        }
+```json5
+  {
+    "on": {
+      "success": {
+        "finish":""
       }
     }
-
-  ```
-  ```json5
-    {
-       "on" : {
-         "success": {
-           "start": [
-             "start-server"
-           ]
-         },
-         "failure": {
-           "finish": ""
-         }
+  }
+```
+```json5
+  {
+     "on" : {
+       "success": {
+         "start": [
+           "start-server"
+         ]
+       },
+       "failure": {
+         "finish": ""
        }
-    }
-  ```
+     }
+  }
+```
 
 Note that in the above examples the <b>finish</b> attribute has no value. The finish step does not need a definition and hence there is no need for a target step value.
 

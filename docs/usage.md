@@ -84,8 +84,8 @@ The step termination event (or) step workflow data tells the target of the curre
 - The events contain data to complete the workflow by defining what the next step is post the completion of the current step.
 the events can either <b>start</b> an array of one or more steps defined in the process or can terminate at the <b>finish </b> step
 ##### Termination event Examples
-  1. Example of events calling other steps in successful and unsuccessful scenarios of the current step
-   ```json5
+* Example of events calling other steps in successful and unsuccessful scenarios of the current step
+```json5
     { 
       "on" : {
         "success" : {
@@ -96,9 +96,8 @@ the events can either <b>start</b> an array of one or more steps defined in the 
         }
       }
     }
-  
-   ```
-2. Examples of events calling the finish step
+```
+* Examples of events calling the finish step
 ```json5
   {
   "on" : {

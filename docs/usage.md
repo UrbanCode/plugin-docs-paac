@@ -1,39 +1,39 @@
 ### List of All Commands:
 
 - **Download a Generic Process**  
-  **Syntax**:  
+  *Syntax*:  
   `download-generic-process <username> <password> <server-url> <process-name> <output-file>`  
-  **Example**:  
+  *Example*:  
   `download-generic-process myuser mypassword https://url:8443 myGenericProcessName myGenericProcess.json`
 
 - **Download a Component Process**  
-  **Syntax**:  
+  *Syntax*:  
   `download-component-process <username> <password> <server-url> <component-process-name> <component-name> <output-file>`  
-  **Example**:  
+  *Example*:  
   `download-component-process myuser mypassword https://url:8443 myComponentProcessName myComponentName myComponentProcess.json`
 
 - **Download an Application Process**  
-  **Syntax**:  
+  *Syntax*:  
   `download-application-process <username> <password> <server-url> <application-process-name> <application-name> <output-file>`  
-  **Example**:  
+  *Example*:  
   `download-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json`
 
 - **Upload a Generic Process**  
-  **Syntax**:  
+  *Syntax*:  
   `upload-generic-process <username> <password> <server-url> <process-name> <input-file>`  
-  **Example**:  
+  *Example*:  
   `upload-generic-process myuser mypassword https://url:8443 myGenericProcessName myGenericProcess.json`
 
 - **Upload a Component Process**  
-  **Syntax**:  
+  *Syntax*:  
   `upload-component-process <username> <password> <server-url> <component-process-name> <component-name> <input-file>`  
-  **Example**:  
+  *Example*:  
   `upload-component-process myuser mypassword https://url:8443 myComponentProcessName myComponentName myComponentProcess.json`
 
 - **Upload an Application Process**  
-  **Syntax**:  
+  *Syntax*:  
   `upload-application-process <username> <password> <server-url> <application-process-name> <application-name> <input-file>`  
-  **Example**:  
+  *Example*:  
   `upload-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json`
 
 ### Structure of Process file
@@ -45,7 +45,7 @@
     "processName": "<name of the process>",
     "parent": "[ | <component-name> | <application-name>]",
     "process": {
-          //"<...json body of the process steps ...>"
+          //"<...json body of the process step definitions ...>"
       }
   }     
 ```
@@ -71,33 +71,34 @@
       "on" : {
           "..step Termination events data.."
       }
-    }
-      
+    } 
 ```
 
-#### Termination Events
-The step termination event (or) step workflow data tells the target of the current step. The 3 valid terminations events are
+### Termination Events within in a Process
+The step termination event tells the possible termination possibilities of a step and attach a target step based on the type of the termination event. the 3 types of termination events are
 1. success - upon successful completion of this step
 2. failure - upon unsuccessful completion of this step
 3. complete  - upon completion of the current step irrespective of successful or unsuccessful execution
 
 - The events contain data to complete the workflow by defining what the next step is post the completion of the current step.
-the events can either <b>start</b> an array of one or more steps defined in the process or can terminate at the <b>finish </b> step
-##### Termination event Examples
-* Example of events calling other steps in successful and unsuccessful scenarios of the current step
+the events can either <b>start</b> an array of one or more steps defined in the process or can terminate at the <b>finish</b> step
+- 
+#### Termination event Examples
+  1. Example of events calling other steps in successful and unsuccessful scenarios of the current step
 ```json5
-    { 
-      "on" : {
-        "success" : {
-            "start" : ["some-step", "some other step"]
-        },
-        "failure" : {
-            "start" : ["handle error condition step"]
-        }
+  { 
+    "on" : {
+      "success" : {
+          "start" : ["some-step", "some other step"]
+      },
+      "failure" : {
+          "start" : ["some step"]
       }
     }
+  }
 ```
-* Examples of events calling the finish step
+2. Examples of events calling the finish step
+* Example-1
 ```json5
   {
   "on" : {
@@ -107,16 +108,7 @@ the events can either <b>start</b> an array of one or more steps defined in the 
    }
   }
 ```
-
-```json5
-  {
-    "on": {
-      "success": {
-        "finish":""
-      }
-    }
-  }
-```
+* Example-2
 ```json5
   {
      "on" : {
@@ -144,83 +136,19 @@ Most of the process steps are explained in https://www.ibm.com/docs/en/devops-de
 The most common step and ubiquitously found step type in Devops Deploy processes. It can submit different types of plugin based on the name of the plugin and the command the plugin has in it.
 
 - Syntax
-  ```json5
-  {
-   
-     "<Name of the step>": {
-          "type": "plugin",
-          "plugin": "<plugin-name>",
-          "command": "<plugin-command-name>",
-          "properties": {
-              <plugin-field-1>
-              <plugin-field-2>
-              .
-              .
-              .
-              <plugin-field-n>
-          },
-          "on": {
-              "success": {
-                  "start": [
-                      "<name of the next step>"
-                  ]
-              },
-              "failure": {
-                  "start" : [
-                         "<name of the next step-1>",
-                         "<name of the next step-2>",
-                  ]
-              }
-          }
-      }
-  }
-      
-  ```
-- Example
-   ```json5
-     {
-       "Download Artifacts for zOS": {
-         "type": "plugin",
-         "plugin": "UrbanCode Deploy Versioned File Storage",
-         "command": "Download Artifacts for zOS",
-         "properties": {
-            "directoryOffset": ".",
-            "versionId": "${p:version.id}",
-            "versionName": "${p:version.name}",
-            "serverUrl": "${p:server.url}",
-            "compId": "${p:component.id}",
-            "repositoryType": "${p?:version\/ucd.repository.type}",
-            "resourceId": "${p:resource.id}",
-            "maxMemory": "1G"
-         },
-         "on": {
-            "success": {
-                "start": [
-                    "c14c031a12ebca72796dbdca98fec0"
-                ]
-            }
-         }
-      } 
-   }
-  ```
-
-### Run Generic Process Step
-
-Step is available in all types of processes and is used to trigger another generic process
-
-- Structure
-  - Syntax
-    ```json5
-    {
-      <Name of the step>": {
-        "type": "run-generic-process",
-        "process": "<generic process to execute>",
-        "resource-path": "${p:resource.path}",
-        "ignore-child-warnings": false,
+```json5
+{
+   "<Name of the step>": {
+        "type": "plugin",
+        "plugin": "<plugin-name>",
+        "command": "<plugin-command-name>",
         "properties": {
-            "processId": "18f7c6c0-4a30-5b0d-ed3d-da228f4d3485",
-            "resourcePath": "${p:resource.path}",
-            "isIgnoreChildWarnings": "false"
+            "<plugin-property-1>": "<plugin-property-value-1>",
+            "<plugin-property-2>": "<plugin-property-value-2>",
+            .
+            .
+            .
+            "<plugin-property-n>": "<plugin-property-n>"
         },
         "on": {
             "success": {
@@ -236,20 +164,74 @@ Step is available in all types of processes and is used to trigger another gener
             }
         }
     }
+}
+    
+```
+- Example
+```json5
+ {
+   "Download Artifacts for zOS": {
+     "type": "plugin",
+     "plugin": "UrbanCode Deploy Versioned File Storage",
+     "command": "Download Artifacts for zOS",
+     "properties": {
+        "directoryOffset": ".",
+        "versionId": "${p:version.id}",
+        "versionName": "${p:version.name}",
+        "serverUrl": "${p:server.url}",
+        "compId": "${p:component.id}",
+        "repositoryType": "${p?:version\/ucd.repository.type}",
+        "resourceId": "${p:resource.id}",
+        "maxMemory": "1G"
+     },
+     "on": {
+        "success": {
+            "start": [
+                "c14c031a12ebca72796dbdca98fec0"
+            ]
+        }
+     }
+  } 
+}
+```
+
+### Run Generic Process Step
+
+Step is available in all types of processes and is used to trigger another generic process
+
+- Structure
+  - Syntax
+```json5
+    {
+      "<Name of the step>": {
+        "type": "run-generic-process",
+        "process": "<generic process to execute>",
+        "resource-path": "${p:resource.path}",
+        "ignore-child-warnings": false,
+        "on": {
+            "success": {
+                "start": [
+                    "<name of the next step>"
+                ]
+            },
+            "failure": {
+                "start" : [
+                       "<name of the next step-1>",
+                       "<name of the next step-2>",
+                ]
+            }
+        }
+    }
+```
 
   - Example
-    ```json5
+```json5
      {
        "RUN-GENERIC-PROCESS": {
          "type": "run-generic-process",
          "process": "REXX",
          "resource-path": "${p:resource.path}",
          "ignore-child-warnings": false,
-         "properties": {
-            "processId": "18f7c6c0-4a30-5b0d-ed3d-da228f4d3485",
-            "resourcePath": "${p:resource.path}",
-            "isIgnoreChildWarnings": "false"
-         },
          "on": {
             "success": {
                 "finish": ""
@@ -257,15 +239,14 @@ Step is available in all types of processes and is used to trigger another gener
          }
       }
     } 
-        
-    ```
+```
 
 ### Run application component step
 * This step is applicable within an application process to trigger another component process.
 * The called component process should be already defined to prevent unexpected behaviour.
 
 - Syntax
-    ```json5
+```json5
       {
          "<name of the step>": {
             "type": "application-run-component-process",
@@ -290,9 +271,9 @@ Step is available in all types of processes and is used to trigger another gener
         }
      }
     
-    ```
+```
   - Example-1
-  ```json5
+```json5
     { 
       "run-component-PAC-COMP": {
           "type": "application-run-component-process", 
@@ -309,9 +290,9 @@ Step is available in all types of processes and is used to trigger another gener
           }
        }
    }
-   ```
+```
   - Example-2 : with minimal fields
-    ```json5
+```json5
     {  
       "run-component-PAC-COMP": {
         "type": "application-run-component-process", 
@@ -324,13 +305,13 @@ Step is available in all types of processes and is used to trigger another gener
         }
       }
     }
-    ```
+```
 
 ### Component Run Component Process
 * This step is applicable within a component process to trigger another component process.
 * The callee component process should be already defined to prevent unexpected behaviour.
   - Syntax
-    ```json5
+```json5
     {
         "<name of the step>": {
           "type": "component-run-component-process",
@@ -342,13 +323,13 @@ Step is available in all types of processes and is used to trigger another gener
           }
       }
     }
-    ```
+```
   - Example
-    ```json5
+```json5
     {
         "run-a-component-process": {
             "type": "component-run-component-process",
-            "process": "LESS-COMPREHENSIVE-PROCESS",
+            "process": "DEPLOY-ARTIFACT-COMPONENT-PROCESS",
             "on": {
                 "success": {
                     "finish": ""
@@ -356,14 +337,14 @@ Step is available in all types of processes and is used to trigger another gener
             }
         }
     }
-   ```
+```
 
 ### Acquire Lock Step
 * This step acquires a lock on a specified string value. You can use locks to prevent concurrent modification of resources.
 * To release the lock, use the Release lock step. Also, locks are released automatically when the process finishes.
 * This step applies to application processes, component processes, and generic processes.
   - Syntax
-  ```json5
+```json5
   {
     "<name of the step>": {
         "type": "acquire-lock",
@@ -377,9 +358,9 @@ Step is available in all types of processes and is used to trigger another gener
         }
      }
    }
-  ```
+```
   - Example
-  ```json5
+```json5
    {
       "acquire-lock-on-component-resource": {
         "type": "acquire-lock",
@@ -392,13 +373,13 @@ Step is available in all types of processes and is used to trigger another gener
       }
    }
   
-  ```
+```
 
 ### Release Lock Step
 * This step releases a lock on a specified string value.
 * This step applies to application processes, component processes, and generic processes.
 - Syntax
-  ```json5
+```json5
   {
     "<name of the step>": {
         "type": "release-lock",
@@ -412,9 +393,9 @@ Step is available in all types of processes and is used to trigger another gener
         }
     }
   }
-  ```
+```
 - Example
-  ```json5
+```json5
   {
       "release-lock-on-component-resource": {
         "type": "release-lock",
@@ -428,15 +409,14 @@ Step is available in all types of processes and is used to trigger another gener
         }
       }
   }
-  
-  ```
+```
 
 ### Switch Step
 * At least 1 case is required in the switch step
 * Evaluate is a mandatory field that should have a property which will resolve to a case
 * Applications, components, and generic processes share some process steps.
 - Syntax
-  ```json5
+```json5
   {
     "<name of the step>" : {
         "type": "switch",
@@ -459,11 +439,11 @@ Step is available in all types of processes and is used to trigger another gener
         }
      }
    }
-  ```
+```
 - Example
-  ```json5
+```json5
   {
-  "Run Necessary Shell based on Request property" : {
+    "Run Necessary Shell based on Request property" : {
         "type": "switch",
         "evaluate": "${p:AppProcessRequestProperty}",
         "case": {
@@ -486,14 +466,14 @@ Step is available in all types of processes and is used to trigger another gener
         }
       }
    }
-  ```
+```
 
 ### Add inventory step
 * This step applies only to component processes.
 * The component resource that the process is running against will have an inventory entry created for it with the specified status.
 * Status is mandatory field
 - Syntax
-    ```json5
+```json5
     {
        "<name of the step>" : {
         "type": "add-inventory-status",
@@ -507,11 +487,11 @@ Step is available in all types of processes and is used to trigger another gener
         }
       }
     }
-    ```
+```
 - example
-  ```json5
+```json5
    {
-    "add-acitve-status-to-inventory": {
+    "add-active-status-to-inventory": {
         "type": "add-inventory-status",
         "status": "Active",
         "on": {
@@ -523,14 +503,14 @@ Step is available in all types of processes and is used to trigger another gener
         }
      }
    }
-   ```
+```
 
 ### Remove Inventory Step
 * This step applies only to component processes.
 * The component resource that the process is running against will have an inventory entry removed from it.
 * status is mandatory
 - Syntax
-    ```json5
+```json5
       { 
         "<name of the step>" : {
           "type": "remove-inventory-status",
@@ -542,9 +522,9 @@ Step is available in all types of processes and is used to trigger another gener
           }
         }
      }
-    ```
+```
 - Example
-  ```json5
+```json5
    {
     "Remove version status":{
         "type": "remove-inventory-status",
@@ -556,12 +536,12 @@ Step is available in all types of processes and is used to trigger another gener
         }
       }
     }
-    ```
+```
 
 ### Add warning Step
 * message is mandatory
   - Syntax
-    ```json5
+```json5
     {
     "<name of the step>" : {
         "type": "add-process-warning",
@@ -575,9 +555,9 @@ Step is available in all types of processes and is used to trigger another gener
         }
       }
     }
-    ```
+```
   - Example
-    ```json5
+```json5
     {
       "warning about some stuff in process": {
         "type": "add-process-warning",
@@ -591,15 +571,14 @@ Step is available in all types of processes and is used to trigger another gener
          }
        }
     }
-
-    ```
+```
 ### Join step
 * The Join step merges a process so that only 1 step runs at a time.
 * If any of the steps that connect to a Join step fail or do not run, the Join step causes the process to fail.
 * This step applies to application processes, component processes, and generic processes.
 
   - Syntax
-  ```json5
+```json5
        {
         "<name of the step>": {
             "type": "join",
@@ -609,9 +588,9 @@ Step is available in all types of processes and is used to trigger another gener
         }
      }
 
-  ```
+```
   - Example
-  ```json5
+```json5
      {
         "join-step-1": {
             "type": "join",
@@ -621,7 +600,7 @@ Step is available in all types of processes and is used to trigger another gener
         }
      }
 
-  ```
+```
 
 ### Application Manual task step
 * This step applies to application processes, component processes, and generic processes.
@@ -629,28 +608,27 @@ Step is available in all types of processes and is used to trigger another gener
 * When multiple approvals are given deploying-user takes precedence over 'role-restrictions' and 'any-user' takes last precedence
 * When deployingUserOnly is set to false or not provided and roleRestrictionData is empty or not provided then 'any-user' can approve the task
 - Syntax
-  ```json5
+```json5
     {
         "<name of the step>": {
         "type": "application-manual-task",
-        "deployingUserOnly": "true|flase",
+        "deployingUserOnly": "true|false",
         "roleRestrictionData": {
             "roleRestrictions": []
         },
-        "notification-template": "TaskCreated",
+        "notification-template": "<an existing template>", 
         "on": {
             "success": {
                 "start": [
-                    "DEPLOY-BY-ROLE-MEMBERS-ENVIRONMENT"
+                    "<next step>"
                 ]
             }
         } 
       }
     }
-    
-  ```
+```
 - Example
-  ```json5
+```json5
     {
       "AUTOMATION-ENGINEER-APPROVAL": {
         "type": "application-manual-task",
@@ -671,14 +649,14 @@ Step is available in all types of processes and is used to trigger another gener
         }
       }
     }
-  ```
+```
 
 ### Run operational process for multiple components
 
 * This step applies only to application processes, including application processes that are associated with application templates.
 
 - Syntax
-  ```json5
+```json5
    {
       "<name of the step>": {
            "type": "run-operational-process-for-multiple-components",
@@ -699,17 +677,16 @@ Step is available in all types of processes and is used to trigger another gener
            }
        }
    }
-
-  ```
+```
 - Example-1
-  ```json5
+```json5
    {
       "OPERATIONAL-PROCESS-FOR-COMPONENTS": {
            "type": "run-operational-process-for-multiple-components",
            "name": "OPERATIONAL-PROCESS-FOR-COMPONENTS",
            "process": "DEPLOY",
-           "select-components-by-tag": "18f4db6a-3bd2-49eb-e7fb-54bf51ab515e",
-           "select-resources-by-tag": "18fbe8da-3fd0-8fa3-1487-baa0fc330049",
+           "select-components-by-tag": "18f4db6a-3bd2-49eb-e7fb-54bf51ab515e", // tag id 
+           "select-resources-by-tag": "18fbe8da-3fd0-8fa3-1487-baa0fc330049", // tag id 
            "fail-fast": true,
            "ignore-child-warnings": true,
            "run-on-first-online-resource-only": false,
@@ -723,11 +700,10 @@ Step is available in all types of processes and is used to trigger another gener
            }
        }
    }
-
-  ```
+```
 - Example-2
 
-  ```json5
+```json5
   {
        "OPERATIONAL-PROCESS-FOR-COMPONENTS": {
            "type": "run-operational-process-for-multiple-components",
@@ -745,7 +721,7 @@ Step is available in all types of processes and is used to trigger another gener
        }
    }   
 
-  ```
+```
 
 ### Rollback Multiple Components step
 
@@ -753,53 +729,55 @@ Step is available in all types of processes and is used to trigger another gener
 * This step applies only to application processes, including application processes that are associated with application templates.
 
 - Syntax
- ```json5
+```json5
     {
-        "<name of the step>": {
-            "type": "rollback-multiple-components",
-            "process": "<name of the component process>",
-            "rollback-type": "[remove-undesired-incremental-versions | replace-with-last-deployed]",
-            "select-versions-with-inventory-status": "<a valid version inventory status, usually it is set as ACTIVE>",
-            "select-components-by-tag": "<component tag>",
-            "fail-fast": boolean,
-            "ignore-child-warnings": boolean,
-            "max-concurrent-processes": "[unlimited | a positive integer]",
-            "max-concurrent-components": "[unlimited | a positive integer]",
-            "on": {
-                "success": {
-                    "finish": ""
-                }
-            }
+      "<name of the step>": {
+        "type": "rollback-multiple-components",
+        "process": "<name of the component process>",
+        "rollback-type": "[remove-undesired-incremental-versions | replace-with-last-deployed]",
+        "select-versions-with-inventory-status": "<a valid version inventory status, usually it is set as ACTIVE>",
+        "select-components-by-tag": "<component tag>",
+        "fail-fast": "true | false",
+        "ignore-child-warnings": "true | false",
+        "max-concurrent-processes": "[unlimited | a positive integer]",
+        "max-concurrent-components": "[unlimited | a positive integer]",
+        "on": {
+          "success": {
+            "finish": ""
+          }
         }
- ```
+      }
+    }
+```
 
 - Example
-  ```json5
+```json5
     {
-         "rollback multiple steps": {
-            "type": "rollback-multiple-components",
-            "process": "ROLLBACK-VERSION",
-            "rollback-type": "remove-undesired-incremental-versions",
-            "select-versions-with-inventory-status": "Active",
-            "select-components-by-tag": "18f4db6a-3bd2-49eb-e7fb-54bf51ab515e",
-            "fail-fast": false,
-            "ignore-child-warnings": false,
-            "max-concurrent-processes": "unlimited",
-            "max-concurrent-components": "100",
-            "on": {
-                "success": {
-                    "finish": ""
-                }
-            }
+      "rollback multiple steps": {
+        "type": "rollback-multiple-components",
+        "process": "ROLLBACK-VERSION",
+        "rollback-type": "remove-undesired-incremental-versions",
+        "select-versions-with-inventory-status": "Active",
+        "select-components-by-tag": "18f4db6a-3bd2-49eb-e7fb-54bf51ab515e", // tag id 
+        "fail-fast": false,
+        "ignore-child-warnings": false,
+        "max-concurrent-processes": "unlimited",
+        "max-concurrent-components": "100",
+        "on": {
+          "success": {
+            "finish": ""
+          }
         }
-  ```
+      }
+   }
+```
 
 ### Rollback Component
 
 This step applies only to application processes.
 
 - Syntax
-   ```json5
+```json5
     { 
         "<name of the step>": {
             "type": "rollback-component",
@@ -808,7 +786,7 @@ This step applies only to application processes.
             "rollback-type": "[remove-undesired-incremental-versions | replace-with-last-deployed]",
             "select-versions-with-inventory-status": "<a valid version inventory status, usually it is set as ACTIVE>",
             "fail-fast": false,  // boolean
-            "ignore-child-warnings": boolean,
+            "ignore-child-warnings": "true | false",
             "max-concurrent-processes": "[unlimited | a positive integer]",
             "on": {
                 "success": {
@@ -817,10 +795,10 @@ This step applies only to application processes.
             }
         }
    } 
-  ```
+```
 
 - Example
-   ```json5
+```json5
        { 
         "Rollback PAC-COMP": {
             "type": "rollback-component",
@@ -842,15 +820,14 @@ This step applies only to application processes.
             }
         }
      }
-    
-  ```
+```
 
 ### Uninstall Component
 
 * Applications, components, and generic processes share some process steps. This step applies only to application processes.
 
 - Syntax
-  ```json5
+```json5
    {
       "<name of the step>": {
         "type": "uninstall-component",
@@ -858,8 +835,8 @@ This step applies only to application processes.
         "process": "<uninstall process name>",
         "select-versions": "[selected-with-process | all-versions]",
         "select-versions-with-inventory-status": "<version status in inventory usually set to ACTIVE>",
-        "fail-fast": boolean,
-        "ignore-child-warnings": boolean,
+        "fail-fast": "true | false",
+        "ignore-child-warnings": "true | false",
         "max-concurrent-processes": "[unlimited | a positive integer]",
         "on": {
             "success": {
@@ -869,9 +846,9 @@ This step applies only to application processes.
      }
    }
 
-  ```
+```
 - Example
-  ```json5
+```json5
   {
       "Uninstall-PAC-COMP": {
         "type": "uninstall-component",
@@ -893,15 +870,14 @@ This step applies only to application processes.
         }
     }
   }
-
-  ```
+```
 
 ### Uninstall Multiple Components
 
 * This step applies only to application processes, including application processes that are associated with application templates
 
 - Syntax
-    ```json5
+```json5
     { 
         "<name of the step>": {
             "type": "uninstall-multiple-components",
@@ -910,8 +886,8 @@ This step applies only to application processes.
             "select-versions-with-inventory-status": "<version status in inventory usually set to ACTIVE>",
             "select-components-by-tag": "<uuid of the component tag>",
             "select-resources-by-tag": "<uuid of the resources tag>",
-            "fail-fast": boolean,
-            "ignore-child-warnings": boolean,
+            "fail-fast": "true | false",
+            "ignore-child-warnings": "true | false",
             "max-concurrent-processes": "[unlimited | a positive integer]",
             "max-concurrent-components": "[unlimited | a positive integer]",
             "on": {
@@ -921,17 +897,17 @@ This step applies only to application processes.
             }
         }
     }
-    ```
+```
 - Example
-    ```json5
+```json5
     { 
         "uninstall-multiple-components": {
             "type": "uninstall-multiple-components",
             "process": "REMOVE-VERSION",
             "select-versions": "selected-with-process",
             "select-versions-with-inventory-status": "Active",
-            "select-components-by-tag": "18f4db6a-3bd2-49eb-e7fb-54bf51ab515e",
-            "select-resources-by-tag": "18fbe8da-3fd0-8fa3-1487-baa0fc330049",
+            "select-components-by-tag": "18f4db6a-3bd2-49eb-e7fb-54bf51ab515e", //tag id 
+            "select-resources-by-tag": "18fbe8da-3fd0-8fa3-1487-baa0fc330049", // tag id 
             "fail-fast": false,
             "ignore-child-warnings": false,
             "max-concurrent-processes": "[unlimited | a positive integer]",
@@ -943,13 +919,13 @@ This step applies only to application processes.
             }
         }
     }
-    ```
+```
 
 ### Install Component
 * This step applies only to application processes.
 
 - Syntax
-    ```json5
+```json5
     {
        "<name of the step>" : {
         "type": "install-component",
@@ -967,10 +943,10 @@ This step applies only to application processes.
         }
       }
     }
-    ```
+```
 
 - Example
-    ```json5
+```json5
       {
           "Install PAC-COMP": {
             "type": "install-component",
@@ -988,13 +964,13 @@ This step applies only to application processes.
             }
         }
       }
-    ```
+```
 
 ### Install Multiple Components
 * his step applies only to application processes, including application processes that are associated with application templates.
 
 - Syntax
-    ```json5
+```json5
        { 
           "<name of the step>": {
             "type": "install-multiple-components",
@@ -1002,8 +978,8 @@ This step applies only to application processes.
             "select-versions-without-inventory-status": "<version status in inventory usually set to ACTIVE>",
             "select-components-by-tag": "<uuid of the component tag>", // optional
             "select-resources-by-tag": "<uuid of the resource tag>", // optional
-            "fail-fast": boolean,
-            "ignore-child-warnings": boolean,
+            "fail-fast": "true | false",
+            "ignore-child-warnings": "true | false",
             "max-concurrent-processes": "[unlimited | a positive integer]",
             "max-concurrent-components": "[unlimited | a positive integer]",
             "on": {
@@ -1013,17 +989,17 @@ This step applies only to application processes.
             }
           }
        }
-    ```
+```
 
 - Example
-    ```json5
+```json5
        { 
           "install-multiple components": {
             "type": "install-multiple-components",
             "process": "install-version",
             "select-versions-without-inventory-status": "Active",
-            "select-components-by-tag": "18f4db6a-3bd2-49eb-e7fb-54bf51ab515e",
-            "select-resources-by-tag": "18fbe8da-3fd0-8fa3-1487-baa0fc330049",
+            "select-components-by-tag": "18f4db6a-3bd2-49eb-e7fb-54bf51ab515e", // tag id 
+            "select-resources-by-tag": "18fbe8da-3fd0-8fa3-1487-baa0fc330049", // tag id 
             "fail-fast": false,
             "ignore-child-warnings": false,
             "max-concurrent-processes": "unlimited",
@@ -1035,20 +1011,20 @@ This step applies only to application processes.
             }
          }
        }
-    ```
+```
 
 ### Run process for each version
 * This step applies only to application processes, including application processes that are associated with application templates.
 
 - Syntax
-    ```json5
+```json5
      {
         "<name o the step>": {
             "type": "run-process-for-each-version",
             "component": "<component name>",
             "process": "<process name>",
-            "fail-fast": boolean,
-            "ignore-child-warnings": boolean,
+            "fail-fast": "true | false",
+            "ignore-child-warnings": "true | false",
             "run-on-first-online-resource-only": false ,// boolean
             "max-concurrent-processes": "[unlimited | a positive integer]",
             "on": {
@@ -1058,10 +1034,9 @@ This step applies only to application processes.
             }
         }
      }
-
-    ```
+```
 - Example
-    ```json5
+```json5
      {
         "Run process for each version": {
             "type": "run-process-for-each-version",
@@ -1079,7 +1054,7 @@ This step applies only to application processes.
         }
     }
 
-    ```
+```
 
 ### Run process for each agent
 
@@ -1087,7 +1062,7 @@ This step applies only to application processes.
 * A whole process is contained within this step which has its own start and finish steps.
 
 - Syntax
-    ```json5
+```json5
      {
         "<name of the step>": {
             "type": "for-each-agent",
@@ -1103,9 +1078,9 @@ This step applies only to application processes.
             }
         }
     }
-    ```
+```
 - Example
-    ```json5
+```json5
      {
         "APPLY-CONFIG-TOAGENT": {
             "type": "for-each-agent",
@@ -1147,16 +1122,16 @@ This step applies only to application processes.
             }
         }
     }
-    ```
+```
 
 ### Run process for each resource
 
 - Syntax
-    ```json5
+```json5
     {
         "RESOURCE-TAG": {
             "type": "for-each-resource-tag",
-            "child-process": <process json for child process>,
+            "child-process": "<process json for child process>",
             "tag": [
                 "<tag>"
             ],
@@ -1169,10 +1144,11 @@ This step applies only to application processes.
                 }
             }
         }
+   }
 
-    ```
+```
 - Example
-    ```json5
+```json5
     {
         "RESOURCE-TAG": {
             "type": "for-each-resource-tag",
@@ -1198,7 +1174,7 @@ This step applies only to application processes.
                 }
             },
             "tag": [
-                "18fbe8da-3fd0-8fa3-1487-baa0fc330049"
+                "18fbe8da-3fd0-8fa3-1487-baa0fc330049" // tag ids
             ],
             "max-concurrent-tags": "1",
             "on": {
@@ -1211,19 +1187,19 @@ This step applies only to application processes.
         }
      }
 
-    ```
+```
 
 ### Apply Configuration step
 
 * This step applies only to application processes.
 * This step runs a component process of the type Operational (No Version Needed) or Configuration Deployment.
 - Syntax
-    ```json5
+```json5
      { 
         "<name of the step>": {
             "type": "apply-configuration",
             "component": "<component name>",
-            "process": "<componpent process name>",
+            "process": "<component process name>",
             "fail-fast": false, // boolean value
             "ignore-child-warnings": false, // boolean value 
             "max-concurrent-processes": "[unlimited | a positive integer]",
@@ -1234,9 +1210,9 @@ This step applies only to application processes.
             }
         }
      }
-    ```
+```
 - Example
-    ```json5
+```json5
      { 
         "Apply-config-operation": {
             "type": "apply-configuration",
@@ -1245,12 +1221,6 @@ This step applies only to application processes.
             "fail-fast": false,
             "ignore-child-warnings": false,
             "max-concurrent-processes": "unlimited",
-            "properties": {
-                "allowFailure": "false",
-                "activity.componentProcess.id": "19125c59-269d-43dd-4010-d6d0abc3ebad",
-                "isIgnoreChildWarnings": "false",
-                "activity.component.id": "19125ba9-b2b6-6b45-d6f7-9a97f4adb386"
-            },
             "on": {
                 "success": {
                     "finish": ""
@@ -1258,12 +1228,12 @@ This step applies only to application processes.
             }
         }
      }
-    ```
+```
 
 ### Generic Manual step
 
 - Syntax
-  ```json
+```json
     { 
      "<name of the step>": {
           "type": "generic-manual-task",
@@ -1279,11 +1249,11 @@ This step applies only to application processes.
           }
        }
     }
-  ```
+```
 * When the approval restriction is set to "deploying-user" not value is required for that field
 * Apart from setting approval to "deploying-user", one may also choose selected users or groups of a combination of both
 - Example-1 with approval restricted to 'deploying user'
-   ```json5
+```json5
      { 
       "MANUAL-TASKS": {
            "type": "generic-manual-task",
@@ -1299,10 +1269,10 @@ This step applies only to application processes.
            }
        }
      }  
-   ```
+```
 - Example-2 with approval restricted to identities
 * In this example the restriction is set to users 'deploy', 'admin' and group 'Administrators'.
-  ```json5
+```json5
       { 
         "MANUAL-TASKS": {
             "type": "generic-manual-task",
@@ -1319,10 +1289,10 @@ This step applies only to application processes.
             }
          }  
       }
-  ```
+```
 
 - Example-3 with property definitions
- ```json5
+```json5
         { 
            "MANUAL-TASKS": {
             "type": "generic-manual-task",
@@ -1339,7 +1309,7 @@ This step applies only to application processes.
             },
             "notification-template": "TaskCreated",
             "comment-required": true,
-            "comment-prompt": "HEY,APPROVETHIS",
+            "comment-prompt": "HEY,APPROVE THIS",
             "property-definition": [
                 {
                     "property-name": "TEXT-PROPERTY",
@@ -1402,7 +1372,7 @@ This step applies only to application processes.
                     "description": "MULTI-SELECT-DESCRIPTION"
                 },
                 {
-                    "property-name": "SECURE-PROPERTY",
+                    "property-name": "SECURE-PROPERTY",  // secure properties is unsupported as there is no way to handle encrypt/decrypt secure values
                     "property-type": "secure",
                     "label": "SECURE-LABEL",
                     "description": "SECURE-DESCRIPTION",
@@ -1413,7 +1383,7 @@ This step applies only to application processes.
                     "property-type": "date-time",
                     "label": "DATE-TIME-PROPERTY-LABEL",
                     "description": "DATE-TIME-PROPERTY-DESCRIPTION",
-                    "default": "30/08/2024 19:22"
+                    "default": "30/08/2024 19:22"   // date time has to be in this format
                 }
             ],
             "on": {
@@ -1423,9 +1393,4 @@ This step applies only to application processes.
             }
          }
       }
- ```
-
-
-
-
-
+```

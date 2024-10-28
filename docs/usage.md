@@ -20,30 +20,29 @@
 
 - **Upload a Generic Process**  
   *Syntax*:  
-  `upload-generic-process <username> <password> <server-url> <process-name> <input-file>`  
+  `upload-generic-process <username> <password> <server-url> <input-file>`  
   *Example*:  
-  `upload-generic-process myuser mypassword https://url:8443 myGenericProcessName myGenericProcess.json`
+  `upload-generic-process myuser mypassword https://url:8443  myGenericProcess.json`
 
 - **Upload a Component Process**  
   *Syntax*:  
-  `upload-component-process <username> <password> <server-url> <component-process-name> <component-name> <input-file>`  
+  `upload-component-process <username> <password> <server-url> <input-file>`  
   *Example*:  
-  `upload-component-process myuser mypassword https://url:8443 myComponentProcessName myComponentName myComponentProcess.json`
+  `upload-component-process myuser mypassword https://url:8443 myComponentProcess.json`
 
 - **Upload an Application Process**  
   *Syntax*:  
-  `upload-application-process <username> <password> <server-url> <application-process-name> <application-name> <input-file>`  
+  `upload-application-process <username> <password> <server-url> <input-file>`  
   *Example*:  
-  `upload-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json`
+  `upload-application-process myuser mypassword https://url:8443 myApplicationProcess.json`
 
 ### Structure of Process file
 
 * A process file has below a structure
 ```json5
   {
-    "processType": "[ generic|component|application] ",
-    "processName": "<name of the process>",
-    "parent": "[ | <component-name> | <application-name>]",
+    "[component | application]": "[ <name of the component> | <name of the application>] ", // Field not required/generated for Generic process
+    "process-name": "<name of the process>",
     "process": {
           //"<...json body of the process step definitions ...>"
       }

@@ -1,4 +1,4 @@
-#### With version paac-0.1.0.1171817-beta.zip
+#### With version paac-1.0.1172045
 
 * Quotes are not supported in step-names. Such processes may be downloaded but their integrity is questionable.
 * New processes cannot be created in this version.

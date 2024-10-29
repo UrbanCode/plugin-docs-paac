@@ -12,6 +12,9 @@
 
 ## History
 
-### Version 1.0-Beta
+### Version 1.0 
+* upload commands no longer need process name and the scope(application, component) as arguments and are instead sourced from input file
+
+### Version 0.1.0-Beta
 
 * Initial release

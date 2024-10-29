@@ -773,23 +773,23 @@
 <li>
 <p><strong>Upload a Generic Process</strong><br />
 <em>Syntax</em>:<br />
-<code>upload-generic-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;process-name&gt; &lt;input-file&gt;</code><br />
+<code>upload-generic-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;input-file&gt;</code><br />
 <em>Example</em>:<br />
-<code>upload-generic-process myuser mypassword https://url:8443 myGenericProcessName myGenericProcess.json</code></p>
+<code>upload-generic-process myuser mypassword https://url:8443  myGenericProcess.json</code></p>
 </li>
 <li>
 <p><strong>Upload a Component Process</strong><br />
 <em>Syntax</em>:<br />
-<code>upload-component-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;component-process-name&gt; &lt;component-name&gt; &lt;input-file&gt;</code><br />
+<code>upload-component-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;input-file&gt;</code><br />
 <em>Example</em>:<br />
-<code>upload-component-process myuser mypassword https://url:8443 myComponentProcessName myComponentName myComponentProcess.json</code></p>
+<code>upload-component-process myuser mypassword https://url:8443 myComponentProcess.json</code></p>
 </li>
 <li>
 <p><strong>Upload an Application Process</strong><br />
 <em>Syntax</em>:<br />
-<code>upload-application-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;application-process-name&gt; &lt;application-name&gt; &lt;input-file&gt;</code><br />
+<code>upload-application-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;input-file&gt;</code><br />
 <em>Example</em>:<br />
-<code>upload-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json</code></p>
+<code>upload-application-process myuser mypassword https://url:8443 myApplicationProcess.json</code></p>
 </li>
 </ul>
 <h3 id="structure-of-process-file">Structure of Process file</h3>
@@ -797,9 +797,8 @@
 <li>A process file has below a structure</li>
 </ul>
 <pre><code class="language-json5">  {
-    &quot;processType&quot;: &quot;[ generic|component|application] &quot;,
-    &quot;processName&quot;: &quot;&lt;name of the process&gt;&quot;,
-    &quot;parent&quot;: &quot;[ | &lt;component-name&gt; | &lt;application-name&gt;]&quot;,
+    &quot;[component | application]&quot;: &quot;[ &lt;name of the component&gt; | &lt;name of the application&gt;] &quot;, // Field not required/generated for Generic process
+    &quot;process-name&quot;: &quot;&lt;name of the process&gt;&quot;,
     &quot;process&quot;: {
           //&quot;&lt;...json body of the process step definitions ...&gt;&quot;
       }

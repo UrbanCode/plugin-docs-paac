@@ -36,6 +36,7 @@
   *Example*:  
   `upload-application-process myuser mypassword https://url:8443 myApplicationProcess.json`
 
+
 ### Structure of Process file
 
 * A process file has below a structure

@@ -36,10 +36,9 @@
   *Example*:  
   `upload-application-process myuser mypassword https://url:8443 myApplicationProcess.json`
 
-- **Note: Use quotes for process names/application names/component names that contains space.**
-  *Example*:
-  *Let say while downloading an application process*: 
-  `download-application-process myuser mypassword https://url:8443 "my ApplicationProcess Name" "my Application Name" "myApplicationProcess.json"`
+- **Important Note: Use quotes for process names/application names/component names that contains space**  
+  *For Ex.while downloading an application process*:    
+  `download-application-process myuser mypassword https://url:8443 "my ApplicationProcess Name" "my Application Name" myApplicationProcess.json`  
 
 ### Structure of Process file
 

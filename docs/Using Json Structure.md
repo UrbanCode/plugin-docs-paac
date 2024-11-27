@@ -145,6 +145,10 @@ The most common step and ubiquitously found step type in Devops Deploy processes
         "type": "plugin",
         "plugin": "<plugin-name>",
         "command": "<plugin-command-name>",
+        "postProcessingScript": {
+            "name": "<post-processing-script-name>",
+            "body": "<scriptFile/post-processing-script-name.txt>"
+        },
         "properties": {
             "<plugin-property-1>": "<plugin-property-value-1>",
             "<plugin-property-2>": "<plugin-property-value-2>",
@@ -177,6 +181,10 @@ The most common step and ubiquitously found step type in Devops Deploy processes
      "type": "plugin",
      "plugin": "UrbanCode Deploy Versioned File Storage",
      "command": "Download Artifacts for zOS",
+     "postProcessingScript": {
+        "name": "MyScript",
+        "body": "scriptFile/MyScript.txt"
+    },
      "properties": {
         "directoryOffset": ".",
         "versionId": "${p:version.id}",

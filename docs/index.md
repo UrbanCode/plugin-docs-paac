@@ -13,6 +13,10 @@
 
 ## History
 
+### Version 1.2
+* Added support to handle Post Processing script's body in separate files during upload and download process.
+* Added support for the usage of quotes in process steps.
+
 ### Version 1.1
 * Added support for Yaml files as input/output files along with Json files. Both .yml and .yaml extensions are supported.
 * Improved loggings and validations for input parameters of all commands.

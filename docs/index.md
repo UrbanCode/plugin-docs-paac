@@ -14,8 +14,22 @@
 ## History
 
 ### Version 1.2
-* Added support to handle Post Processing script's body in separate files during upload and download process.
-* Added support for the usage of quotes in process steps.
+* Added support to handle Post Processing script's body in separate files during upload and download process. The file path should be prefixed with **scriptFile/** in the respective Json or Yaml files as shown in below examples:
+
+```json5
+"postProcessingScript": {
+        "name": "MyScript",
+        "body": "scriptFile/MyScript.txt"
+}
+```
+
+```
+postProcessingScript:
+    name: "MyScript"
+    body: "scriptFile/MyScript.txt"
+```
+
+* Added support for the usage of double-quotes in process step names.
 
 ### Version 1.1
 * Added support for Yaml files as input/output files along with Json files. Both .yml and .yaml extensions are supported.

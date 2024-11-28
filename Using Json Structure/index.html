@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -940,6 +940,10 @@ the events can either <b>start</b> an array of one or more steps defined in the 
         &quot;type&quot;: &quot;plugin&quot;,
         &quot;plugin&quot;: &quot;&lt;plugin-name&gt;&quot;,
         &quot;command&quot;: &quot;&lt;plugin-command-name&gt;&quot;,
+        &quot;postProcessingScript&quot;: {
+            &quot;name&quot;: &quot;&lt;post-processing-script-name&gt;&quot;,
+            &quot;body&quot;: &quot;&lt;scriptFile/post-processing-script-name.txt&gt;&quot;
+        },
         &quot;properties&quot;: {
             &quot;&lt;plugin-property-1&gt;&quot;: &quot;&lt;plugin-property-value-1&gt;&quot;,
             &quot;&lt;plugin-property-2&gt;&quot;: &quot;&lt;plugin-property-value-2&gt;&quot;,
@@ -973,6 +977,10 @@ the events can either <b>start</b> an array of one or more steps defined in the 
      &quot;type&quot;: &quot;plugin&quot;,
      &quot;plugin&quot;: &quot;UrbanCode Deploy Versioned File Storage&quot;,
      &quot;command&quot;: &quot;Download Artifacts for zOS&quot;,
+     &quot;postProcessingScript&quot;: {
+        &quot;name&quot;: &quot;MyScript&quot;,
+        &quot;body&quot;: &quot;scriptFile/MyScript.txt&quot;
+    },
      &quot;properties&quot;: {
         &quot;directoryOffset&quot;: &quot;.&quot;,
         &quot;versionId&quot;: &quot;${p:version.id}&quot;,

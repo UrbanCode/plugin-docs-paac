@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -392,6 +392,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#version-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#version-11" class="md-nav__link">
     <span class="md-ellipsis">
       Version 1.1
@@ -563,6 +572,22 @@
 </li>
 </ul>
 <h2 id="history">History</h2>
+<h3 id="version-12">Version 1.2</h3>
+<ul>
+<li>Added support to handle Post Processing script's body in separate files during upload and download process. The file path should be prefixed with <strong>scriptFile/</strong> in the respective Json or Yaml files as shown in below examples:</li>
+</ul>
+<pre><code class="language-json5">&quot;postProcessingScript&quot;: {
+        &quot;name&quot;: &quot;MyScript&quot;,
+        &quot;body&quot;: &quot;scriptFile/MyScript.txt&quot;
+}
+</code></pre>
+<pre><code>postProcessingScript:
+    name: &quot;MyScript&quot;
+    body: &quot;scriptFile/MyScript.txt&quot;
+</code></pre>
+<ul>
+<li>Added support for the usage of double-quotes in process step names.</li>
+</ul>
 <h3 id="version-11">Version 1.1</h3>
 <ul>
 <li>Added support for Yaml files as input/output files along with Json files. Both .yml and .yaml extensions are supported.</li>

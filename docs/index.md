@@ -29,6 +29,8 @@ postProcessingScript:
     body: "scriptFile/MyScript.txt"
 ```
 
+#### Disclaimer: The change of the body of a post processing script would affect it globally. It means will be applicable to all the processes in which the post processing script is used.
+
 * Added support for the usage of double-quotes in process step names.
 
 ### Version 1.1

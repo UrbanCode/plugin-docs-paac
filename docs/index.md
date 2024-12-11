@@ -14,7 +14,7 @@
 ## History
 
 ### Version 2.0
-* Added Support to inject the value of a prulin property from a separate file if a user needs. The file path should be prefixed with **scriptFile/** in the respective Json or Yaml files as shown in below Examples:
+* Added Support to inject the value of a plugin property from a separate file if a user needs. The file path should be prefixed with **scriptFile/** in the respective Json or Yaml files as shown in below Examples:
 
 ```json5
 "properties": {

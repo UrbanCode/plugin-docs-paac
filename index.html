@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -392,6 +392,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#version-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 2.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#version-12" class="md-nav__link">
     <span class="md-ellipsis">
       Version 1.2
@@ -587,6 +596,19 @@
 </li>
 </ul>
 <h2 id="history">History</h2>
+<h3 id="version-20">Version 2.0</h3>
+<ul>
+<li>Added Support to inject the value of a plugin property from a separate file if a user needs. The file path should be prefixed with <strong>scriptFile/</strong> in the respective Json or Yaml files as shown in below Examples:</li>
+</ul>
+<pre><code class="language-json5">&quot;properties&quot;: {
+        &quot;prop1&quot;: &quot;val1&quot;,
+        &quot;prop2&quot;: &quot;scriptFile/PropDetails.txt&quot;
+}
+</code></pre>
+<pre><code>properties:
+    prop1: &quot;val1&quot;
+    prop2: &quot;scriptFile/PropDetails.txt&quot;
+</code></pre>
 <h3 id="version-12">Version 1.2</h3>
 <ul>
 <li>Added support to handle Post Processing script's body in separate files during upload and download process. The file path should be prefixed with <strong>scriptFile/</strong> in the respective Json or Yaml files as shown in below examples:</li>

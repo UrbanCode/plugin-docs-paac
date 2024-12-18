@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -598,6 +598,11 @@
 <h2 id="history">History</h2>
 <h3 id="version-20">Version 2.0</h3>
 <ul>
+<li>Added support to handle comments while uploading a process. The comments are mandatory when an user has <strong>"Require a Comment For Process Design Changes"</strong> enabled in the system settings of DevOps Deploy.</li>
+</ul>
+<p>Currently comments are added as the final argument in any of the upload command. These are also recommneded to be within double quotes.
+Syntax: <code>upload-generic/component/application-process &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;input-file&gt; "comments to add while updating process"</code></p>
+<ul>
 <li>Added Support to inject the value of a plugin property from a separate file if a user needs. The file path should be prefixed with <strong>scriptFile/</strong> in the respective Json or Yaml files as shown in below Examples:</li>
 </ul>
 <pre><code class="language-json5">&quot;properties&quot;: {
@@ -683,7 +688,7 @@
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
   </body>

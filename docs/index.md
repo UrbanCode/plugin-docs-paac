@@ -15,8 +15,10 @@
 
 ### Version 2.0
 * Added support to pass comments while uploading a process. The comments are mandatory when an user has **"Require a Comment For Process Design Changes"** enabled in the system settings of DevOps Deploy.Comments should be enclosed in double quotes. 
-  - Syntax: `<upload-command> <username> <password> <server-url> <input-file> "comments to add while updating process"`
-  - Example `upload-generic-process admin admin http://localhost:8443 simple-shell-process.json "Changed the Regex in shell step to process only text files."`
+
+    **Syntax:** `<upload-command> <username> <password> <server-url> <input-file> "comments to add while updating process"`
+    
+    **Example:** `upload-generic-process admin admin http://localhost:8443 simple-shell-process.json "Changed the Regex in shell step to process only text files."`
   
 
 * Added Support to inject the value of a plugin property from a separate file if a user needs. The file path should be prefixed with **scriptFile/** in the respective Json or Yaml files as shown in below Examples:

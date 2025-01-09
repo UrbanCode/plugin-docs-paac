@@ -599,6 +599,9 @@
 <h3 id="version-20">Version 2.0</h3>
 <ul>
 <li>
+<p>Output json file is pretty printed </p>
+</li>
+<li>
 <p>Added support to pass comments while uploading a process. The comments are mandatory when an user has <strong>"Require a Comment For Process Design Changes"</strong> enabled in the system settings of DevOps Deploy.Comments should be enclosed in double quotes. </p>
 <p><strong>Syntax:</strong> <code>&lt;upload-command&gt; &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;input-file&gt; "comments to add while updating process"</code></p>
 <p><strong>Example:</strong> <code>upload-generic-process admin admin http://localhost:8443 simple-shell-process.json "Changed the Regex in shell step to process only text files."</code></p>

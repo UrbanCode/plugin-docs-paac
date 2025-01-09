@@ -14,6 +14,8 @@
 ## History
 
 ### Version 2.0
+* Output json file is pretty printed 
+
 * Added support to pass comments while uploading a process. The comments are mandatory when an user has **"Require a Comment For Process Design Changes"** enabled in the system settings of DevOps Deploy.Comments should be enclosed in double quotes. 
 
     **Syntax:** `<upload-command> <username> <password> <server-url> <input-file> "comments to add while updating process"`

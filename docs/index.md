@@ -40,6 +40,8 @@
         prop2: "scriptFile/PropDetails.txt"
     ```
 
+* Can download Application and Component processes that have spaces in their names 
+
 ### Version 1.2
 * Added support to handle Post Processing script's body in separate files during upload and download process. The file path should be prefixed with **scriptFile/** in the respective Json or Yaml files as shown in below examples:
 

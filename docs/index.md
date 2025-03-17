@@ -13,6 +13,9 @@
 
 ## History
 
+### Version 3.0
+* Added support to upload/downlaod component template prrocesses and application template processes.
+
 ### Version 2.0
 * Output json file is pretty printed 
 

@@ -18,6 +18,18 @@
   *Example*:  
   `download-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json`
 
+- **Download a Component Template Process**  
+  *Syntax*:  
+  `download-component-template-process <username> <password> <server-url> <component-template-process-name> <component-template-name> <output-file>`  
+  *Example*:  
+  `download-component-template-process myuser mypassword https://url:8443 myComponentTemplateProcessName myComponenTemplatetName myComponentTemplateProcess.json`
+
+- **Download an Application Template Process**  
+  *Syntax*:  
+  `download-application-template-process <username> <password> <server-url> <application-template-process-name> <application-template-name> <output-file>`  
+  *Example*:  
+  `download-application-template-process myuser mypassword https://url:8443 myApplicationTemplateProcessName myApplicationTemplateName myApplicationTemplateProcess.json`
+
 - **Upload a Generic Process**  
   *Syntax*:  
   `upload-generic-process <username> <password> <server-url> <input-file>`  
@@ -35,6 +47,18 @@
   `upload-application-process <username> <password> <server-url> <input-file>`  
   *Example*:  
   `upload-application-process myuser mypassword https://url:8443 myApplicationProcess.json`
+
+- **Upload a component template process**
+  *Syntax*:
+  `upload-component-template-process <username> <password> <server-url> <input-file>`
+  *Example*:
+  `./upload-component-template-process myuser mypassword https://url:8443 myComponentTemplateProcess.json`
+
+- **Upload an application template process**
+  *Syntax*:
+  `upload-application-template-process <username> <password> <server-url> <application-process-name> <application-name> <input-file>`
+  *Example*:
+  `For Ex: ./upload-application-template-process myuser mypassword https://url:8443 myApplicationTemplateProcess.json`
 
 - **Important Note: Use quotes for process names/application names/component names that contains space**  
   *For Ex.while downloading an application process*:    

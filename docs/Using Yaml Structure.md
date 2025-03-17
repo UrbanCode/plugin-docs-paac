@@ -50,13 +50,13 @@
 
 - **Upload a component template process**
   *Syntax*:
-  `upload-componentTemplate-process <username> <password> <server-url> <input-file>`
+  `upload-component-template-process <username> <password> <server-url> <input-file>`
   *Example*:
   `./upload-component-template-process myuser mypassword https://url:8443 myComponentTemplateProcess.yaml`
 
 - **Upload an application template process**
   *Syntax*:
-  `upload-applicationTemplate-process <username> <password> <server-url> <application-process-name> <application-name> <input-file>`
+  `upload-application-template-process <username> <password> <server-url> <application-process-name> <application-name> <input-file>`
   *Example*:
   `For Ex: ./upload-application-template-process myuser mypassword https://url:8443 myApplicationTemplateProcess.yaml`
 

@@ -13,11 +13,14 @@
 
 ## History
 
+### Version 3.1
+* Added support to downlaod all processes for a given scope(Application/Component/Generic Processes).
+
 ### Version 3.0
 * Added support to upload/downlaod component template prrocesses and application template processes.
 
 ### Version 2.0
-* Output json file is pretty printed 
+* Output json file is pretty printed.
 
 * Added support to pass comments while uploading a process. The comments are mandatory when an user has **"Require a Comment For Process Design Changes"** enabled in the system settings of DevOps Deploy.Comments should be enclosed in double quotes. 
 

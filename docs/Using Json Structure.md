@@ -6,17 +6,35 @@
   *Example*:  
   `download-generic-process myuser mypassword https://url:8443 myGenericProcessName myGenericProcess.json`
 
+- **Download all Generic processes**  
+  *Syntax*:  
+  `download-generic-process-all <username> <password> <server-url> <output-file-type(json)>`  
+  *Example*:  
+  `For Ex(json format): ./download-generic-process-all myuser mypassword https://url:8443 json`
+
 - **Download a Component Process**  
   *Syntax*:  
   `download-component-process <username> <password> <server-url> <component-process-name> <component-name> <output-file>`  
   *Example*:  
   `download-component-process myuser mypassword https://url:8443 myComponentProcessName myComponentName myComponentProcess.json`
 
+- **Download all processes for a given component**  
+  *Syntax*:    
+  `download-component-process-all <username> <password> <server-url> <component-name> <output-file-type(json)>`  
+  *Example*:  
+  `For Ex(yaml format): ./download-component-process-all myuser mypassword https://url:8443 myComponentName json`
+
 - **Download an Application Process**  
   *Syntax*:  
   `download-application-process <username> <password> <server-url> <application-process-name> <application-name> <output-file>`  
   *Example*:  
   `download-application-process myuser mypassword https://url:8443 myApplicationProcessName myApplicationName myApplicationProcess.json`
+
+- **Download all processes for a given application**  
+  *Syntax*:  
+  `download-application-process-all <username> <password> <server-url> <application-name> <output-file-type(json)>`  
+  *Example*:  
+  `For Ex(yaml format): ./download-application-process-all myuser mypassword https://url:8443 myApplicationName  json`
 
 - **Download a Component Template Process**  
   *Syntax*:  
@@ -48,16 +66,16 @@
   *Example*:  
   `upload-application-process myuser mypassword https://url:8443 myApplicationProcess.json`
 
-- **Upload a component template process**
-  *Syntax*:
-  `upload-component-template-process <username> <password> <server-url> <input-file>`
-  *Example*:
+- **Upload a component template process**  
+  *Syntax*:  
+  `upload-component-template-process <username> <password> <server-url> <input-file>`  
+  *Example*:  
   `./upload-component-template-process myuser mypassword https://url:8443 myComponentTemplateProcess.json`
 
-- **Upload an application template process**
-  *Syntax*:
-  `upload-application-template-process <username> <password> <server-url> <application-process-name> <application-name> <input-file>`
-  *Example*:
+- **Upload an application template process**  
+  *Syntax*:  
+  `upload-application-template-process <username> <password> <server-url> <application-process-name> <application-name> <input-file>`  
+  *Example*:  
   `For Ex: ./upload-application-template-process myuser mypassword https://url:8443 myApplicationTemplateProcess.json`
 
 - **Important Note: Use quotes for process names/application names/component names that contains space**  

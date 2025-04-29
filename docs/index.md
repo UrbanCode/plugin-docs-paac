@@ -14,10 +14,10 @@
 ## History
 
 ### Version 3.1
-* Added support to downlaod all processes for a given scope(Application/Component/Generic Processes).
+* Added support to download all processes for a given scope (Application/Component/Generic Processes).
 
 ### Version 3.0
-* Added support to upload/downlaod component template prrocesses and application template processes.
+* Added support to upload/download component template processes and application template processes.
 
 ### Version 2.0
 * Output json file is pretty printed.

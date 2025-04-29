@@ -664,17 +664,17 @@
 </li>
 <li>
 <p>Added Support to inject the value of a plugin property from a separate file if a user needs. The file path should be prefixed with <strong>scriptFile/</strong> in the respective Json or Yaml files as shown in below Examples:</p>
-<p><code>json5
-{ 
-  "properties": {
-        "prop1": "val1",
-        "prop2": "scriptFile/PropDetails.txt"
-  }
-}</code></p>
-<p><code>yaml
-properties:
-    prop1: "val1"
-    prop2: "scriptFile/PropDetails.txt"</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="nv">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nv">&quot;prop1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;val1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">&quot;prop2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scriptFile/PropDetails.txt&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">properties</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">prop1</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;val1&quot;</span>
+<span class="w">    </span><span class="nt">prop2</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scriptFile/PropDetails.txt&quot;</span>
+</code></pre></div>
 </li>
 <li>
 <p>Can download Application and Component processes that have spaces in their names </p>
@@ -684,17 +684,17 @@ properties:
 <ul>
 <li>Added support to handle Post Processing script's body in separate files during upload and download process. The file path should be prefixed with <strong>scriptFile/</strong> in the respective Json or Yaml files as shown in below examples:</li>
 </ul>
-<pre><code class="language-json5">  {
-      &quot;postProcessingScript&quot;: {
-        &quot;name&quot;: &quot;MyScript&quot;,
-        &quot;body&quot;: &quot;scriptFile/MyScript.txt&quot;
-      }
-  }
-</code></pre>
-<pre><code class="language-yaml">postProcessingScript:
-    name: &quot;MyScript&quot;
-    body: &quot;scriptFile/MyScript.txt&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">&quot;postProcessingScript&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nv">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MyScript&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scriptFile/MyScript.txt&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">postProcessingScript</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MyScript&quot;</span>
+<span class="w">    </span><span class="nt">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;scriptFile/MyScript.txt&quot;</span>
+</code></pre></div>
 <h4 id="disclaimer-the-change-of-the-body-of-a-post-processing-script-would-affect-it-globally-it-means-will-be-applicable-to-all-the-processes-in-which-the-post-processing-script-is-used">Disclaimer: The change of the body of a post processing script would affect it globally. It means will be applicable to all the processes in which the post processing script is used.</h4>
 <ul>
 <li>Added support for the usage of double-quotes in process step names.</li>
@@ -729,6 +729,8 @@ properties:
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -755,7 +757,7 @@ properties:
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "content.tabs.link"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.c8b220af.min.js"></script>

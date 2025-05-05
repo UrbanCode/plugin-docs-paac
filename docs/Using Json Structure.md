@@ -22,7 +22,7 @@
   *Syntax*:    
   `download-component-process-all <username> <password> <server-url> <component-name> <output-file-type(json)>`  
   *Example*:  
-  `For Ex(yaml format): ./download-component-process-all myuser mypassword https://url:8443 myComponentName json`
+  `For Ex(json format): ./download-component-process-all myuser mypassword https://url:8443 myComponentName json`
 
 - **Download an Application Process**  
   *Syntax*:  
@@ -34,7 +34,7 @@
   *Syntax*:  
   `download-application-process-all <username> <password> <server-url> <application-name> <output-file-type(json)>`  
   *Example*:  
-  `For Ex(yaml format): ./download-application-process-all myuser mypassword https://url:8443 myApplicationName  json`
+  `For Ex(json format): ./download-application-process-all myuser mypassword https://url:8443 myApplicationName  json`
 
 - **Download a Component Template Process**  
   *Syntax*:  

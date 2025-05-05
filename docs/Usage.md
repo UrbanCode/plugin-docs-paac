@@ -406,8 +406,9 @@ Step is available in all types of processes and is used to trigger another gener
         - "<name of the next step-2>"
 ```
 
-=== "JSON"
+
   - Example
+=== "JSON"
 ```json5
      {
        "RUN-GENERIC-PROCESS": {

@@ -98,7 +98,7 @@
 ```
 
 === "YAML"
-```
+```yaml
 "[component | application]": "[ <name of the component> | <name of the application> ]"  # Field not required/generated for Generic process
 process-name: "<name of the process>"
 process:
@@ -131,7 +131,7 @@ process:
 ```
 
 === "YAML"
-```
+```yaml
 "<name of the step>":
   step_data: " ..."
   another_field: " ..."
@@ -170,7 +170,7 @@ the events can either <b>start</b> an array of one or more steps defined in the 
 
 === "YAML"
 
-```
+```yaml
 on:
   success:
     start:
@@ -194,7 +194,7 @@ on:
   }
 ```
 === "YAML"
-```
+```yaml
 on:
   success:
     finish: ""
@@ -217,7 +217,7 @@ on:
   }
 ```
 === "YAML"
-```
+```yaml
 on:
   success:
     start:
@@ -277,7 +277,7 @@ The most common step and ubiquitously found step type in Devops Deploy processes
 ```
 
 === "YAML"
-```
+```yaml
 "<Name of the step>":
   type: "plugin"
   plugin: "<plugin-name>"
@@ -335,7 +335,7 @@ The most common step and ubiquitously found step type in Devops Deploy processes
 ```
 
 === "YAML"
-```
+```yaml
  "Download Artifacts for zOS":
   type: "plugin"
   plugin: "UrbanCode Deploy Versioned File Storage"
@@ -390,7 +390,7 @@ Step is available in all types of processes and is used to trigger another gener
 ```
 
 === "YAML"
-```
+```yaml
 "<Name of the step>":
   type: "run-generic-process"
   process: "<generic process to execute>"
@@ -425,7 +425,7 @@ Step is available in all types of processes and is used to trigger another gener
 ```
 
 === "YAML"
-```
+```yaml
 RUN-GENERIC-PROCESS:
   type: "run-generic-process"
   process: "REXX"
@@ -472,7 +472,7 @@ RUN-GENERIC-PROCESS:
 
 === "YAML"
 
-```
+```yaml
 "<name of the step>":
   type: "application-run-component-process"
   component: "<component-name>"
@@ -515,7 +515,7 @@ RUN-GENERIC-PROCESS:
 ```
 
 === "YAML"
-```
+```yaml
 run-component-PAC-COMP:
   type: "application-run-component-process"
   component: "PAC-COMP"
@@ -548,7 +548,7 @@ run-component-PAC-COMP:
 ```
 
 === "YAML"
-```
+```yaml
 run-component-PAC-COMP:
   type: "application-run-component-process"
   component: "PAC-COMP"
@@ -579,7 +579,7 @@ run-component-PAC-COMP:
 ```
 
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "component-run-component-process"
   process: "<name of the component process>"
@@ -606,6 +606,7 @@ run-component-PAC-COMP:
 ```
 
 === "YAML"
+```yaml
 run-a-component-process:
   type: "component-run-component-process"
   process: "DEPLOY-ARTIFACT-COMPONENT-PROCESS"
@@ -637,7 +638,7 @@ run-a-component-process:
    }
 ```
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "acquire-lock"
   lock: "<lock-expression>"
@@ -665,7 +666,7 @@ run-a-component-process:
 ```
 
 === "YAML"
-```
+```yaml
 acquire-lock-on-component-resource:
   type: "acquire-lock"
   lock: "${p:component.name}-${p:componentProcess.name}-${p:resource.name}"
@@ -698,7 +699,7 @@ acquire-lock-on-component-resource:
 ```
 
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "release-lock"
   lock: "<lock-expression>"
@@ -727,7 +728,7 @@ acquire-lock-on-component-resource:
   }
 ```
 === "YAML"
-```
+```yaml
 release-lock-on-component-resource:
   type: "release-lock"
   lock: "${p:component.name}-${p:componentProcess.name}-${p:resource.name}"
@@ -769,7 +770,7 @@ release-lock-on-component-resource:
    }
 ```
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "switch"
   evaluate: "<property that evaluates to a switch case>"
@@ -816,7 +817,7 @@ release-lock-on-component-resource:
    }
 ```
 === "YAML"
-```
+```yaml
 "Run Necessary Shell based on Request property":
   type: "switch"
   evaluate: "${p:AppProcessRequestProperty}"
@@ -856,7 +857,7 @@ release-lock-on-component-resource:
     }
 ```
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "add-inventory-status"
   status: "<desired-inventory-status>"
@@ -885,7 +886,7 @@ release-lock-on-component-resource:
 ```
 
 === "YAML"
-```
+```yaml
 add-active-status-to-inventory:
   type: "add-inventory-status"
   status: "Active"
@@ -916,7 +917,7 @@ add-active-status-to-inventory:
      }
 ```
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "remove-inventory-status"
   status: "<inventory-status>"
@@ -941,7 +942,7 @@ add-active-status-to-inventory:
     }
 ```
 === "YAML"
-```
+```yaml
 Remove version status:
   type: "remove-inventory-status"
   status: "active"
@@ -972,7 +973,7 @@ Remove version status:
 ```
 
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "add-process-warning"
   message: "Warning message here.."
@@ -1002,7 +1003,7 @@ Remove version status:
 ```
 
 === "YAML"
-```
+```yaml
 warning about some stuff in process:
   type: "add-process-warning"
   message: "Step may not have worked"
@@ -1032,7 +1033,7 @@ warning about some stuff in process:
 
 ```
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "join"
   on:
@@ -1055,7 +1056,7 @@ warning about some stuff in process:
 ```
 
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "join"
   on:
@@ -1089,7 +1090,7 @@ warning about some stuff in process:
     }
 ```
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "application-manual-task"
   deployingUserOnly: "true|false"
@@ -1127,7 +1128,7 @@ warning about some stuff in process:
     }
 ```
 === "YAML"
-```
+```yaml
 AUTOMATION-ENGINEER-APPROVAL:
   type: "application-manual-task"
   deployingUserOnly: "false"
@@ -1172,7 +1173,7 @@ AUTOMATION-ENGINEER-APPROVAL:
    }
 ```
 === "YAML"
-```
+```yaml
 "<name of the step>":
   type: "run-operational-process-for-multiple-components"
   name: "<name of the step>"
@@ -1214,7 +1215,7 @@ AUTOMATION-ENGINEER-APPROVAL:
    }
 ```
 === "YAML"
-```
+```yaml
 OPERATIONAL-PROCESS-FOR-COMPONENTS:
   type: "run-operational-process-for-multiple-components"
   name: "OPERATIONAL-PROCESS-FOR-COMPONENTS"
@@ -1253,7 +1254,7 @@ OPERATIONAL-PROCESS-FOR-COMPONENTS:
 
 ```
 === "YAML"
-```
+```yaml
 OPERATIONAL-PROCESS-FOR-COMPONENTS:
   type: "run-operational-process-for-multiple-components"
   process: "DEPLOY"
@@ -1295,7 +1296,7 @@ OPERATIONAL-PROCESS-FOR-COMPONENTS:
     }
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "rollback-multiple-components"
   process: "<name of the component process>"
@@ -1333,7 +1334,7 @@ OPERATIONAL-PROCESS-FOR-COMPONENTS:
    }
 ```
 === "YAML"
-```
+```yaml
 rollback multiple steps:
   type: "rollback-multiple-components"
   process: "ROLLBACK-VERSION"
@@ -1374,7 +1375,7 @@ This step applies only to application processes.
    } 
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "rollback-component"
   component: "<component name>"
@@ -1415,7 +1416,7 @@ This step applies only to application processes.
      }
 ```
 === "YAML"
-```
+```yaml
 Rollback PAC-COMP:
   type: "rollback-component"
   component: "PAC-COMP"
@@ -1460,7 +1461,7 @@ Rollback PAC-COMP:
 
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "uninstall-component"
   component: "<component name>"
@@ -1500,7 +1501,7 @@ Rollback PAC-COMP:
   }
 ```
 === "YAML"
-```
+```yaml
 Uninstall-PAC-COMP:
   type: "uninstall-component"
   component: "PAC-COMP"
@@ -1547,7 +1548,7 @@ Uninstall-PAC-COMP:
     }
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "uninstall-multiple-components"
   process: "<component process name>"
@@ -1588,7 +1589,7 @@ Uninstall-PAC-COMP:
     }
 ```
 === "YAML"
-```
+```yaml
 uninstall-multiple-components:
   type: "uninstall-multiple-components"
   process: "REMOVE-VERSION"
@@ -1630,7 +1631,7 @@ uninstall-multiple-components:
     }
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "install-component"
   component: "<component name>"
@@ -1667,7 +1668,7 @@ uninstall-multiple-components:
       }
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "install-component"
   component: "<component name>"
@@ -1708,7 +1709,7 @@ uninstall-multiple-components:
        }
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "install-multiple-components"
   process: "<component process>"
@@ -1747,7 +1748,7 @@ uninstall-multiple-components:
        }
 ```
 === "YAML"
-```
+```yaml
 install-multiple components:
   type: "install-multiple-components"
   process: "install-version"
@@ -1788,7 +1789,7 @@ install-multiple components:
      }
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "run-process-for-each-version"
   component: "<component name>"
@@ -1824,7 +1825,7 @@ install-multiple components:
 
 ```
 === "YAML"
-```
+```yaml
 Run process for each version:
   type: "run-process-for-each-version"
   component: "PAC-COMP"
@@ -1863,7 +1864,7 @@ Run process for each version:
     }
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "for-each-agent"
   child-process: "<process json that has to run on each agent>"
@@ -1921,7 +1922,7 @@ Run process for each version:
     }
 ```
 === "YAML"
-```
+```yaml
 APPLY-CONFIG-TOAGENT:
   type: "for-each-agent"
   child-process:
@@ -1977,7 +1978,7 @@ APPLY-CONFIG-TOAGENT:
 
 ```
 === "YAML"
-```
+```yaml
 RESOURCE-TAG:
   type: "for-each-resource-tag"
   child-process: "<process json for child process>"
@@ -2032,7 +2033,7 @@ RESOURCE-TAG:
 
 ```
 === "YAML"
-```
+```yaml
 RESOURCE-TAG:
   type: "for-each-resource-tag"
   child-process:
@@ -2083,7 +2084,7 @@ RESOURCE-TAG:
      }
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "apply-configuration"
   component: "<component name>"
@@ -2115,7 +2116,7 @@ RESOURCE-TAG:
      }
 ```
 === "YAML"
-```
+```yaml
 Apply-config-operation:
   type: "apply-configuration"
   component: "PAC-COMP"
@@ -2150,7 +2151,7 @@ Apply-config-operation:
     }
 ```
 === "YAML"
-```
+```yaml
 <name of the step>:
   type: "generic-manual-task"
   restrict-approval-to:
@@ -2190,7 +2191,7 @@ Apply-config-operation:
      }  
 ```
 === "YAML"
-```
+```yaml
 MANUAL-TASKS:
   type: "generic-manual-task"
   restrict-approval-to:
@@ -2224,7 +2225,7 @@ MANUAL-TASKS:
       }
 ```
 === "YAML"
-```
+```yaml
 MANUAL-TASKS:
   type: "generic-manual-task"
   restrict-approval-to:
@@ -2341,7 +2342,7 @@ MANUAL-TASKS:
       }
 ```
 === "YAML"
-```
+```yaml
 MANUAL-TASKS:
   type: "generic-manual-task"
   restrict-approval-to:

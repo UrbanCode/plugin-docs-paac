@@ -64,6 +64,7 @@
   *Syntax*:  
   `download-application-process-all <username> <password> <server-url> <application-name> <output-file-type(json)>`  
   *Example*:
+    
     === "JSON"
 
         `For Ex(json format): ./download-application-process-all myuser mypassword https://url:8443 myApplicationName  json`
@@ -75,6 +76,7 @@
   *Syntax*:  
   `download-component-template-process <username> <password> <server-url> <component-template-process-name> <component-template-name> <output-file>`  
   *Example*:  
+    
     === "JSON"
 
         `download-component-template-process myuser mypassword https://url:8443 myComponentTemplateProcessName myComponenTemplatetName myComponentTemplateProcess.json`
@@ -98,6 +100,7 @@
   *Syntax*:  
   `upload-generic-process <username> <password> <server-url> <input-file>`  
   *Example*:  
+    
     === "JSON"
         
         `upload-generic-process myuser mypassword https://url:8443  myGenericProcess.json`

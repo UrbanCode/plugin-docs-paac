@@ -14,7 +14,7 @@
 
 - **Download all Generic processes**  
   *Syntax*:  
-  `download-generic-process-all <username> <password> <server-url> <output-file-type(jsonyaml)>`  
+  `download-generic-process-all <username> <password> <server-url> <output-file-type(json/yaml)>`  
   *Example*:  
   
     === "JSON"

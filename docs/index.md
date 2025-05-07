@@ -2,9 +2,9 @@
 
 ---
 
-* 'Devops Deploy' processes allows a user to automate a set of repeatable tasks in a orderly fashion and execute them on configured target machines.
+* **`Devops Deploy`** processes allows a user to automate a set of repeatable tasks in a orderly fashion and execute them on configured target machines.
 
-* Processes can be configured at 3 places in the product, 'Application', 'Component' , 'Processes' and the processes configured here are termed as 'application process', 'component process', 'generic process' respectively.
+* Processes can be configured at 3 places in the product, **`Application`**, **`Component`** , **`Processes`** and the processes configured here are termed as **`Application Process`**, **`Component Process`**, **`Generic Process`** respectively.
 
 * The aim of this project/tool is to allow users to configure their processes in a source code repo like GIT and make it their single source truth and place for users to collaborate to enhance their processes. 
 
@@ -14,7 +14,7 @@
 ## History
 
 ### Version 3.1
-* Added support to download all processes for a given scope(Application/Component/Generic Processes).
+* Added support to download all processes for a given scope (Application/Component/Generic Processes).
 
 ### Version 3.0
 * Added support to upload/download component template processes and application template processes.
@@ -22,14 +22,22 @@
 ### Version 2.0
 * Output json file is pretty printed.
 
-* Added support to pass comments while uploading a process. The comments are mandatory when an user has **"Require a Comment For Process Design Changes"** enabled in the system settings of DevOps Deploy.Comments should be enclosed in double quotes. 
+* Added support to pass comments while uploading a process. The comments are mandatory when an user has **`Require a Comment For Process Design Changes`** enabled in the system settings of DevOps Deploy.Comments should be enclosed in double quotes. 
 
-    **Syntax:** `<upload-command> <username> <password> <server-url> <input-file> "comments to add while updating process"`
+    **Syntax:** 
     
-    **Example:** `upload-generic-process admin admin http://localhost:8443 simple-shell-process.json "Changed the Regex in shell step to process only text files."`
+    ```sh
+    <upload-command> <username> <password> <server-url> <input-file> "comments to add while updating process"
+    ```
+    
+    **Example:** 
+    
+    ```sh
+    upload-generic-process admin admin http://localhost:8443 simple-shell-process.json "Changed the Regex in shell step to process only text files."
+    ```
   
 
-* Added Support to inject the value of a plugin property from a separate file if a user needs. The file path should be prefixed with **scriptFile/** in the respective Json or Yaml files as shown in below Examples:
+* Added Support to inject the value of a plugin property from a separate file if a user needs. The file path should be prefixed with **`scriptFile/`** in the respective Json or Yaml files as shown in below Examples:
 
     ```json5
     { 

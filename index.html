@@ -590,10 +590,10 @@
 <hr />
 <ul>
 <li>
-<p>'Devops Deploy' processes allows a user to automate a set of repeatable tasks in a orderly fashion and execute them on configured target machines.</p>
+<p><strong><code>Devops Deploy</code></strong> processes allows a user to automate a set of repeatable tasks in a orderly fashion and execute them on configured target machines.</p>
 </li>
 <li>
-<p>Processes can be configured at 3 places in the product, 'Application', 'Component' , 'Processes' and the processes configured here are termed as 'application process', 'component process', 'generic process' respectively.</p>
+<p>Processes can be configured at 3 places in the product, <strong><code>Application</code></strong>, <strong><code>Component</code></strong> , <strong><code>Processes</code></strong> and the processes configured here are termed as <strong><code>Application Process</code></strong>, <strong><code>Component Process</code></strong>, <strong><code>Generic Process</code></strong> respectively.</p>
 </li>
 <li>
 <p>The aim of this project/tool is to allow users to configure their processes in a source code repo like GIT and make it their single source truth and place for users to collaborate to enhance their processes. </p>
@@ -605,7 +605,7 @@
 <h2 id="history">History</h2>
 <h3 id="version-31">Version 3.1</h3>
 <ul>
-<li>Added support to download all processes for a given scope(Application/Component/Generic Processes).</li>
+<li>Added support to download all processes for a given scope (Application/Component/Generic Processes).</li>
 </ul>
 <h3 id="version-30">Version 3.0</h3>
 <ul>
@@ -617,12 +617,16 @@
 <p>Output json file is pretty printed.</p>
 </li>
 <li>
-<p>Added support to pass comments while uploading a process. The comments are mandatory when an user has <strong>"Require a Comment For Process Design Changes"</strong> enabled in the system settings of DevOps Deploy.Comments should be enclosed in double quotes. </p>
-<p><strong>Syntax:</strong> <code>&lt;upload-command&gt; &lt;username&gt; &lt;password&gt; &lt;server-url&gt; &lt;input-file&gt; "comments to add while updating process"</code></p>
-<p><strong>Example:</strong> <code>upload-generic-process admin admin http://localhost:8443 simple-shell-process.json "Changed the Regex in shell step to process only text files."</code></p>
+<p>Added support to pass comments while uploading a process. The comments are mandatory when an user has <strong><code>Require a Comment For Process Design Changes</code></strong> enabled in the system settings of DevOps Deploy.Comments should be enclosed in double quotes. </p>
+<p><strong>Syntax:</strong> </p>
+<div class="highlight"><pre><span></span><code>&lt;upload-command&gt;<span class="w"> </span>&lt;username&gt;<span class="w"> </span>&lt;password&gt;<span class="w"> </span>&lt;server-url&gt;<span class="w"> </span>&lt;input-file&gt;<span class="w"> </span><span class="s2">&quot;comments to add while updating process&quot;</span>
+</code></pre></div>
+<p><strong>Example:</strong> </p>
+<div class="highlight"><pre><span></span><code>upload-generic-process<span class="w"> </span>admin<span class="w"> </span>admin<span class="w"> </span>http://localhost:8443<span class="w"> </span>simple-shell-process.json<span class="w"> </span><span class="s2">&quot;Changed the Regex in shell step to process only text files.&quot;</span>
+</code></pre></div>
 </li>
 <li>
-<p>Added Support to inject the value of a plugin property from a separate file if a user needs. The file path should be prefixed with <strong>scriptFile/</strong> in the respective Json or Yaml files as shown in below Examples:</p>
+<p>Added Support to inject the value of a plugin property from a separate file if a user needs. The file path should be prefixed with <strong><code>scriptFile/</code></strong> in the respective Json or Yaml files as shown in below Examples:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span>
 <span class="w">  </span><span class="nv">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nv">&quot;prop1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;val1&quot;</span><span class="p">,</span>

@@ -13,6 +13,11 @@
 
 ## History
 
+### Version 3.2
+* Supports tag-names instead of their IDs while upload/download.
+* All files related to a process will be downloaded into a single directory.
+* Included support for process configuration and properties in the json/yaml process script.
+
 ### Version 3.1
 * Added support to download all processes for a given scope (Application/Component/Generic Processes).
 

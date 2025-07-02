@@ -759,7 +759,7 @@ Note that in the above examples, the <b>finish</b> attribute has no value. The f
 
 === "JSON"
 
-    ```
+    ```json5
       {
           "properties": [
           // It MUST contain a property object with "name": "workingDir".

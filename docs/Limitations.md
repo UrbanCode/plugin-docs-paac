@@ -1,3 +1,6 @@
+#### With version paac-3.2
+* Notifications in generic process configurations are not supported
+
 #### With version paac-1.0.1172045
 
 * New processes cannot be created in this version.

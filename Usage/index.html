@@ -1652,83 +1652,83 @@ the events can either <b>start</b> an array of one or more steps defined in the 
 <div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">JSON</label><label for="__tabbed_23_2">YAML</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>  {
-      &quot;properties&quot;: [
-      // It MUST contain a property object with &quot;name&quot;: &quot;workingDir&quot;.
-      // It MAY optionally contain a property object with &quot;name&quot;: &quot;defaultResourceId&quot;.
-      // No other &#39;name&#39; values are allowed within this &#39;properties&#39; array.
-          {
-            &quot;name&quot;: &quot;workingDir&quot;,
-            &quot;value&quot;: &quot;[[String: The working directory for the process execution. MANDATORY. Can include placeholders like &#39;${p:resource/work.dir}/${p:process.name}&#39;.]]&quot;
-          }
-          // --- Optional Property: defaultResourceId ---
-          // Uncomment the following block if &#39;defaultResourceId&#39; is needed.
-          /*
-          , {
-            &quot;name&quot;: &quot;defaultResourceId&quot;,
-            &quot;value&quot;: &quot;[[String: The ID of the default resource. OPTIONAL. MUST be a UUID (e.g., &#39;196f310a-45fc-6941-e488-d4a0a87a7f38&#39;).]]&quot;
-          }
-          */
-      // No other property objects are allowed in this array.
-      ],
-      &quot;description&quot;: &quot;[[String: A textual description for this configuration. Can be an empty string &#39; &#39; or a detailed text.]]&quot;,
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="c1">// It MUST contain a property object with &quot;name&quot;: &quot;workingDir&quot;.</span>
+<span class="w">      </span><span class="c1">// It MAY optionally contain a property object with &quot;name&quot;: &quot;defaultResourceId&quot;.</span>
+<span class="w">      </span><span class="c1">// No other &#39;name&#39; values are allowed within this &#39;properties&#39; array.</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nv">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;workingDir&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The working directory for the process execution. MANDATORY. Can include placeholders like &#39;${p:resource/work.dir}/${p:process.name}&#39;.]]&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="c1">// --- Optional Property: defaultResourceId ---</span>
+<span class="w">          </span><span class="c1">// Uncomment the following block if &#39;defaultResourceId&#39; is needed.</span>
+<span class="w">          </span><span class="c">/*</span>
+<span class="c">          , {</span>
+<span class="c">            &quot;name&quot;: &quot;defaultResourceId&quot;,</span>
+<span class="c">            &quot;value&quot;: &quot;[[String: The ID of the default resource. OPTIONAL. MUST be a UUID (e.g., &#39;196f310a-45fc-6941-e488-d4a0a87a7f38&#39;).]]&quot;</span>
+<span class="c">          }</span>
+<span class="c">          */</span>
+<span class="w">      </span><span class="c1">// No other property objects are allowed in this array.</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nv">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: A textual description for this configuration. Can be an empty string &#39; &#39; or a detailed text.]]&quot;</span><span class="p">,</span>
 
-      // --- Optional Fields ---
-      // The following fields might be present or absent depending on the specific configuration.
+<span class="w">      </span><span class="c1">// --- Optional Fields ---</span>
+<span class="w">      </span><span class="c1">// The following fields might be present or absent depending on the specific configuration.</span>
 
-      &quot;propDefs&quot;: [
-        // This array defines custom properties that can be configured for this item.
-        // This entire &#39;propDefs&#39; array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].
-          {
-            &quot;index&quot;: &quot;[[Integer: A zero-based index for display order, e.g., 0, 1, 2.]]&quot;,
-            &quot;name&quot;: &quot;[[String: The internal name of the property, e.g., &#39;TextProperty&#39;, &#39;select-property&#39;, &#39;checkbox&#39;].]&quot;,
-            &quot;type&quot;: &quot;[[String: The data type and UI control type. Examples: &#39;TEXT&#39;, &#39;SELECT&#39;, &#39;CHECKBOX&#39;, &#39;DATETIME&#39;, &#39;MULTI_SELECT&#39;.]]&quot;,
-            &quot;inherited&quot;: &quot;[[Boolean: true if inherited, false otherwise.]]&quot;,
-            &quot;isHidden&quot;: &quot;[[Boolean: true if the property should be hidden in the UI, false otherwise.]]&quot;,
-            &quot;required&quot;: &quot;[[Boolean: true if the property is mandatory, false otherwise.]]&quot;,
-            &quot;label&quot;: &quot;[[String: The user-friendly label displayed in the UI, e.g., &#39;TextProperty-label&#39;, &#39;checkbox property label&#39;.]]&quot;,
-            &quot;description&quot;: &quot;[[String: A detailed description of the property&#39;s purpose.]]&quot;,
-            &quot;pattern&quot;: &quot;[[String: An optional regular expression pattern for validation. Can be an empty string &#39;&#39;]]&quot;,
-            &quot;value&quot;: &quot;[[String|Boolean|Number|null: The default or current value of the property. The type should match the &#39;type&#39; field. E.g., &#39;DEFAULT-VALUE&#39;, &#39;true&#39;, 123, null.]]&quot;
-            // &quot;allowedValues&quot;: &quot;[[Optional Array of Objects: ONLY present if &#39;type&#39; is &#39;SELECT&#39;]]&quot;
-            // If &#39;type&#39; is &quot;SELECT&quot;, this field is required and structured as:
-            // &quot;allowedValues&quot;: [
-            //   { &quot;value&quot;: &quot;[[String: The actual value to be stored]]&quot;, &quot;label&quot;: &quot;[[String: The display label for the value]]&quot; },
-            //   { &quot;value&quot;: &quot;DD&quot;, &quot;label&quot;: &quot;DD&quot; },
-            //   { &quot;value&quot;: &quot;WD&quot;, &quot;label&quot;: &quot;WD&quot; }
-            // ]
-          }
-        // Add more property definition objects as needed.
-      ],
+<span class="w">      </span><span class="nv">&quot;propDefs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="c1">// This array defines custom properties that can be configured for this item.</span>
+<span class="w">        </span><span class="c1">// This entire &#39;propDefs&#39; array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nv">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[Integer: A zero-based index for display order, e.g., 0, 1, 2.]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The internal name of the property, e.g., &#39;TextProperty&#39;, &#39;select-property&#39;, &#39;checkbox&#39;].]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The data type and UI control type. Examples: &#39;TEXT&#39;, &#39;SELECT&#39;, &#39;CHECKBOX&#39;, &#39;DATETIME&#39;, &#39;MULTI_SELECT&#39;.]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;inherited&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[Boolean: true if inherited, false otherwise.]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;isHidden&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[Boolean: true if the property should be hidden in the UI, false otherwise.]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[Boolean: true if the property is mandatory, false otherwise.]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The user-friendly label displayed in the UI, e.g., &#39;TextProperty-label&#39;, &#39;checkbox property label&#39;.]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: A detailed description of the property&#39;s purpose.]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: An optional regular expression pattern for validation. Can be an empty string &#39;&#39;]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String|Boolean|Number|null: The default or current value of the property. The type should match the &#39;type&#39; field. E.g., &#39;DEFAULT-VALUE&#39;, &#39;true&#39;, 123, null.]]&quot;</span>
+<span class="w">            </span><span class="c1">// &quot;allowedValues&quot;: &quot;[[Optional Array of Objects: ONLY present if &#39;type&#39; is &#39;SELECT&#39;]]&quot;</span>
+<span class="w">            </span><span class="c1">// If &#39;type&#39; is &quot;SELECT&quot;, this field is required and structured as:</span>
+<span class="w">            </span><span class="c1">// &quot;allowedValues&quot;: [</span>
+<span class="w">            </span><span class="c1">//   { &quot;value&quot;: &quot;[[String: The actual value to be stored]]&quot;, &quot;label&quot;: &quot;[[String: The display label for the value]]&quot; },</span>
+<span class="w">            </span><span class="c1">//   { &quot;value&quot;: &quot;DD&quot;, &quot;label&quot;: &quot;DD&quot; },</span>
+<span class="w">            </span><span class="c1">//   { &quot;value&quot;: &quot;WD&quot;, &quot;label&quot;: &quot;WD&quot; }</span>
+<span class="w">            </span><span class="c1">// ]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Add more property definition objects as needed.</span>
+<span class="w">      </span><span class="p">],</span>
 
-      &quot;webhooks&quot;: [
-      // This array defines webhooks to be triggered by certain events.
-      // This entire &#39;webhooks&#39; array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].
-          {
-            &quot;url&quot;: &quot;[[String: The URL to which the webhook request will be sent, e.g., &#39;http://git.com&#39;, &#39;http://exec.com&#39;]]&quot;,
-            &quot;proxyHost&quot;: &quot;[[String: Optional proxy host. Can be a placeholder like &#39;${p?:system/proxyHost}&#39; or an empty string &#39;&#39;]]]&quot;,
-            &quot;proxyPort&quot;: &quot;[[String: Optional proxy port. Can be a placeholder like &#39;${p?:system/proxyPort}&#39; or an empty string &#39;&#39;]]]&quot;,
-            &quot;webhookTemplate&quot;: {
-            &quot;name&quot;: &quot;[[String: The name of the webhook template, e.g., &#39;webhooktemplate&#39;]]&quot;,
-            &quot;description&quot;: &quot;[[String: A description for the webhook template. Can be empty &#39;&#39;]]&quot;,
-            &quot;body&quot;: &quot;[[String: The body content of the webhook request.]]&quot;,
-            &quot;type&quot;: &quot;[[String: The type of event that triggers the webhook. Example: &#39;PROCESS_FAILURE&#39;. Other types may exist.]]&quot;
-          }
-      // Add more webhook objects as needed.
-      ],
+<span class="w">      </span><span class="nv">&quot;webhooks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="c1">// This array defines webhooks to be triggered by certain events.</span>
+<span class="w">      </span><span class="c1">// This entire &#39;webhooks&#39; array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nv">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The URL to which the webhook request will be sent, e.g., &#39;http://git.com&#39;, &#39;http://exec.com&#39;]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;proxyHost&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: Optional proxy host. Can be a placeholder like &#39;${p?:system/proxyHost}&#39; or an empty string &#39;&#39;]]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;proxyPort&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: Optional proxy port. Can be a placeholder like &#39;${p?:system/proxyPort}&#39; or an empty string &#39;&#39;]]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;webhookTemplate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nv">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The name of the webhook template, e.g., &#39;webhooktemplate&#39;]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: A description for the webhook template. Can be empty &#39;&#39;]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The body content of the webhook request.]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The type of event that triggers the webhook. Example: &#39;PROCESS_FAILURE&#39;. Other types may exist.]]&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">      </span><span class="c1">// Add more webhook objects as needed.</span>
+<span class="w">      </span><span class="err">]</span><span class="p">,</span>
 
-      &quot;teamMappings&quot;: [
-        // This array defines mappings to specific teams for permissions or notifications.
-        // This entire &#39;teamMappings&#39; array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].
-        {
-          &quot;resourceTypeId&quot;: &quot;[[String: The ID of the resource type being mapped, e.g., &#39;20000000000000000000000000000109&#39;]]&quot;,
-          &quot;resourceTypeName&quot;: &quot;[[String: The name of the resource type, e.g., &#39;Process&#39;]]&quot;,
-          &quot;teamId&quot;: &quot;[[String: The unique ID of the team, e.g., &#39;18f70a02-67bd-8ac4-7c5a-fcddeecfd8df&#39;]]&quot;,
-          &quot;teamLabel&quot;: &quot;[[String: The display label of the team, e.g., &#39;Deployer-team&#39;]]&quot;
-        }
-      // Add more team mapping objects as needed.
-      ]
-  }
+<span class="w">      </span><span class="nv">&quot;teamMappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="c1">// This array defines mappings to specific teams for permissions or notifications.</span>
+<span class="w">        </span><span class="c1">// This entire &#39;teamMappings&#39; array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nv">&quot;resourceTypeId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The ID of the resource type being mapped, e.g., &#39;20000000000000000000000000000109&#39;]]&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nv">&quot;resourceTypeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The name of the resource type, e.g., &#39;Process&#39;]]&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nv">&quot;teamId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The unique ID of the team, e.g., &#39;18f70a02-67bd-8ac4-7c5a-fcddeecfd8df&#39;]]&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nv">&quot;teamLabel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[[String: The display label of the team, e.g., &#39;Deployer-team&#39;]]&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="c1">// Add more team mapping objects as needed.</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">

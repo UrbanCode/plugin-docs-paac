@@ -760,86 +760,87 @@ Note that in the above examples, the <b>finish</b> attribute has no value. The f
 === "JSON"
 
     ```
-    {
-        "properties": [
-        // It MUST contain a property object with "name": "workingDir".
-        // It MAY optionally contain a property object with "name": "defaultResourceId".
-        // No other 'name' values are allowed within this 'properties' array.
+      {
+          "properties": [
+          // It MUST contain a property object with "name": "workingDir".
+          // It MAY optionally contain a property object with "name": "defaultResourceId".
+          // No other 'name' values are allowed within this 'properties' array.
+              {
+                "name": "workingDir",
+                "value": "[[String: The working directory for the process execution. MANDATORY. Can include placeholders like '${p:resource/work.dir}/${p:process.name}'.]]"
+              }
+              // --- Optional Property: defaultResourceId ---
+              // Uncomment the following block if 'defaultResourceId' is needed.
+              /*
+              , {
+                "name": "defaultResourceId",
+                "value": "[[String: The ID of the default resource. OPTIONAL. MUST be a UUID (e.g., '196f310a-45fc-6941-e488-d4a0a87a7f38').]]"
+              }
+              */
+          // No other property objects are allowed in this array.
+          ],
+          "description": "[[String: A textual description for this configuration. Can be an empty string ' ' or a detailed text.]]",
+          
+          // --- Optional Fields ---
+          // The following fields might be present or absent depending on the specific configuration.
+          
+          "propDefs": [
+            // This array defines custom properties that can be configured for this item.
+            // This entire 'propDefs' array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].
+              {
+                "index": "[[Integer: A zero-based index for display order, e.g., 0, 1, 2.]]",
+                "name": "[[String: The internal name of the property, e.g., 'TextProperty', 'select-property', 'checkbox'].]",
+                "type": "[[String: The data type and UI control type. Examples: 'TEXT', 'SELECT', 'CHECKBOX', 'DATETIME', 'MULTI_SELECT'.]]",
+                "inherited": "[[Boolean: true if inherited, false otherwise.]]",
+                "isHidden": "[[Boolean: true if the property should be hidden in the UI, false otherwise.]]",
+                "required": "[[Boolean: true if the property is mandatory, false otherwise.]]",
+                "label": "[[String: The user-friendly label displayed in the UI, e.g., 'TextProperty-label', 'checkbox property label'.]]",
+                "description": "[[String: A detailed description of the property's purpose.]]",
+                "pattern": "[[String: An optional regular expression pattern for validation. Can be an empty string '']]",
+                "value": "[[String|Boolean|Number|null: The default or current value of the property. The type should match the 'type' field. E.g., 'DEFAULT-VALUE', 'true', 123, null.]]"
+                // "allowedValues": "[[Optional Array of Objects: ONLY present if 'type' is 'SELECT']]"
+                // If 'type' is "SELECT", this field is required and structured as:
+                // "allowedValues": [
+                //   { "value": "[[String: The actual value to be stored]]", "label": "[[String: The display label for the value]]" },
+                //   { "value": "DD", "label": "DD" },
+                //   { "value": "WD", "label": "WD" }
+                // ]
+              }
+            // Add more property definition objects as needed.
+          ],
+          
+          "webhooks": [
+          // This array defines webhooks to be triggered by certain events.
+          // This entire 'webhooks' array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].
+              {
+                "url": "[[String: The URL to which the webhook request will be sent, e.g., 'http://git.com', 'http://exec.com']]",
+                "proxyHost": "[[String: Optional proxy host. Can be a placeholder like '${p?:system/proxyHost}' or an empty string '']]]",
+                "proxyPort": "[[String: Optional proxy port. Can be a placeholder like '${p?:system/proxyPort}' or an empty string '']]]",
+                "webhookTemplate": {
+                "name": "[[String: The name of the webhook template, e.g., 'webhooktemplate']]",
+                "description": "[[String: A description for the webhook template. Can be empty '']]",
+                "body": "[[String: The body content of the webhook request.]]",
+                "type": "[[String: The type of event that triggers the webhook. Example: 'PROCESS_FAILURE'. Other types may exist.]]"
+              }
+          // Add more webhook objects as needed.
+          ],
+          
+          "teamMappings": [
+            // This array defines mappings to specific teams for permissions or notifications.
+            // This entire 'teamMappings' array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].
             {
-              "name": "workingDir",
-              "value": "[[String: The working directory for the process execution. MANDATORY. Can include placeholders like '${p:resource/work.dir}/${p:process.name}'.]]"
+              "resourceTypeId": "[[String: The ID of the resource type being mapped, e.g., '20000000000000000000000000000109']]",
+              "resourceTypeName": "[[String: The name of the resource type, e.g., 'Process']]",
+              "teamId": "[[String: The unique ID of the team, e.g., '18f70a02-67bd-8ac4-7c5a-fcddeecfd8df']]",
+              "teamLabel": "[[String: The display label of the team, e.g., 'Deployer-team']]"
             }
-            // --- Optional Property: defaultResourceId ---
-            // Uncomment the following block if 'defaultResourceId' is needed.
-            /*
-            , {
-              "name": "defaultResourceId",
-              "value": "[[String: The ID of the default resource. OPTIONAL. MUST be a UUID (e.g., '196f310a-45fc-6941-e488-d4a0a87a7f38').]]"
-            }
-            */
-        // No other property objects are allowed in this array.
-        ],
-        "description": "[[String: A textual description for this configuration. Can be an empty string ' ' or a detailed text.]]",
-        
-        // --- Optional Fields ---
-        // The following fields might be present or absent depending on the specific configuration.
-        
-        "propDefs": [
-          // This array defines custom properties that can be configured for this item.
-          // This entire 'propDefs' array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].
-            {
-              "index": "[[Integer: A zero-based index for display order, e.g., 0, 1, 2.]]",
-              "name": "[[String: The internal name of the property, e.g., 'TextProperty', 'select-property', 'checkbox'].]",
-              "type": "[[String: The data type and UI control type. Examples: 'TEXT', 'SELECT', 'CHECKBOX', 'DATETIME', 'MULTI_SELECT'.]]",
-              "inherited": "[[Boolean: true if inherited, false otherwise.]]",
-              "isHidden": "[[Boolean: true if the property should be hidden in the UI, false otherwise.]]",
-              "required": "[[Boolean: true if the property is mandatory, false otherwise.]]",
-              "label": "[[String: The user-friendly label displayed in the UI, e.g., 'TextProperty-label', 'checkbox property label'.]]",
-              "description": "[[String: A detailed description of the property's purpose.]]",
-              "pattern": "[[String: An optional regular expression pattern for validation. Can be an empty string '']]",
-              "value": "[[String|Boolean|Number|null: The default or current value of the property. The type should match the 'type' field. E.g., 'DEFAULT-VALUE', 'true', 123, null.]]"
-              // "allowedValues": "[[Optional Array of Objects: ONLY present if 'type' is 'SELECT']]"
-              // If 'type' is "SELECT", this field is required and structured as:
-              // "allowedValues": [
-              //   { "value": "[[String: The actual value to be stored]]", "label": "[[String: The display label for the value]]" },
-              //   { "value": "DD", "label": "DD" },
-              //   { "value": "WD", "label": "WD" }
-              // ]
-            }
-          // Add more property definition objects as needed.
-        ],
-        
-        "webhooks": [
-        // This array defines webhooks to be triggered by certain events.
-        // This entire 'webhooks' array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].
-            {
-              "url": "[[String: The URL to which the webhook request will be sent, e.g., 'http://git.com', 'http://exec.com']]",
-              "proxyHost": "[[String: Optional proxy host. Can be a placeholder like '${p?:system/proxyHost}' or an empty string '']]]",
-              "proxyPort": "[[String: Optional proxy port. Can be a placeholder like '${p?:system/proxyPort}' or an empty string '']]]",
-              "webhookTemplate": {
-              "name": "[[String: The name of the webhook template, e.g., 'webhooktemplate']]",
-              "description": "[[String: A description for the webhook template. Can be empty '']]",
-              "body": "[[String: The body content of the webhook request.]]",
-              "type": "[[String: The type of event that triggers the webhook. Example: 'PROCESS_FAILURE'. Other types may exist.]]"
-            }
-        // Add more webhook objects as needed.
-        ],
-        
-        "teamMappings": [
-          // This array defines mappings to specific teams for permissions or notifications.
-          // This entire 'teamMappings' array is OPTIONAL. If not needed, omit it entirely or provide an empty array: [].
-          {
-            "resourceTypeId": "[[String: The ID of the resource type being mapped, e.g., '20000000000000000000000000000109']]",
-            "resourceTypeName": "[[String: The name of the resource type, e.g., 'Process']]",
-            "teamId": "[[String: The unique ID of the team, e.g., '18f70a02-67bd-8ac4-7c5a-fcddeecfd8df']]",
-            "teamLabel": "[[String: The display label of the team, e.g., 'Deployer-team']]"
-          }
-        // Add more team mapping objects as needed.
-        ]
-    }
+          // Add more team mapping objects as needed.
+          ]
+      }
     ```
 
 === "YAML"
+
     ```yaml
       # --- Core Configuration Fields ---
       # These fields define fundamental aspects of the process configuration.

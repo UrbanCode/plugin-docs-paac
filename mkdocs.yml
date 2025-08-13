@@ -1,2 +1,2 @@
-site_name: "PAAC"
+site_name: "CAC - Configuration As Code"
 INHERIT: plugin-doc-common-config/base.yml

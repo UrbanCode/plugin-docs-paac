@@ -1,4 +1,4 @@
-## Steps to Integrate PAAC(using paac-0.1.0.1171817-beta) with DevOps Deploy using Jenkins
+## Steps to Integrate CAC(using paac-0.1.0.1171817-beta) with DevOps Deploy using Jenkins
 
 ### Problem Statement:
 Need to update an existing process stored in GitHub in JSON/YAML format to DevOps Deploy. The process can be of any type: **Generic**, **Component**, or **Application**.
@@ -8,7 +8,7 @@ Need to update an existing process stored in GitHub in JSON/YAML format to DevOp
 
 ### Prerequisites:
 - A up and running Jenkins instance.
-- The PAAC CLI should be present on the machine where the Jenkins server is installed.
+- The CAC CLI should be present on the machine where the Jenkins server is installed.
 - Permissions to update the process being worked on.
 
 ### Configurations Needed in Jenkins:
@@ -27,7 +27,7 @@ Need to update an existing process stored in GitHub in JSON/YAML format to DevOp
 
 4. **Configure the Build Steps Section**  
    Add an "Execute Shell" option.  
-   In the "Execute Shell" command box, change the current working directory to the directory where the PAAC CLI is present.  
+   In the "Execute Shell" command box, change the current working directory to the directory where the CAC CLI is present.  
    Then execute the command (refer to the **List of All Commands** section) according to the type of process you're working with.  
    ![Image 3](media/Step4.png)
 
